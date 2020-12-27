@@ -14,13 +14,13 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d public"
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "license": "0BSD",
   "dependencies": {
     "babel-plugin-styled-components": "^1.12.0",
     "gatsby": "^2.26.1",
+    "gatsby-plugin-offline": "^3.7.1",
     "gatsby-plugin-react-helmet": "^3.7.0",
     "gatsby-plugin-styled-components": "^3.7.0",
     "react": "^16.13.1",

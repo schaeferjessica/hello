@@ -27,7 +27,6 @@ const Layout = ({children}) => {
   const color = theme === 'light' ? colors.light : colors.dark;
 
   const bindMouseEvents = cursor => {
-    // TODO: check how many times this events gets binded
     document.addEventListener('mousemove', e => {
       cursor.current.style.top = `${e.clientY}px`;
       cursor.current.style.left = `${e.clientX}px`;
