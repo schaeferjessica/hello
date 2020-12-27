@@ -1,7 +1,7 @@
 
 import * as React from "react"
 import Link from "./base/link";
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { colors } from '../styles/color';
 
 // data
@@ -27,10 +27,6 @@ const links = [
     linkText: 'BIH - Spark',
   },
   {
-    link: 'https://www.spark-bih.de/',
-    linkText: 'BIH - Spark',
-  },
-  {
     link: 'https://www.dhm.de/',
     linkText: 'Deutsches Historisches Museum',
   },
@@ -39,24 +35,55 @@ const links = [
 // styles
 const FooterEl = styled.footer`
   padding-top: 20px;
+  padding-right: 0;
   padding-bottom: 20px;
   border-top: 1px solid ${colors.black};
 `;
 const Nav = styled.nav`
   display: flex;
   align-items: center;
+  position: relative;
+
+  > p {
+    white-space: nowrap;
+    margin-right: 20px;
+  }
 `;
+const TickerWrapper = styled.div`
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 30px;
+`;
+
+const ticker = keyframes`
+  0% { transform: translate(0%, 0); }
+  100% {transform: translate(-100%, 0); }
+`;
+const tickerShadow = keyframes`
+  0% { transform: translate(100%, 0); }
+  100% {transform: translate(0%, 0); }
+`;
+const animationDuration = 20;
 const NavUl = styled.ul`
   display: flex;
   align-items: center;
   list-style: none;
   margin: 0;
-  padding: 0;
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  transform: translate(0%, 0);
+  animation: ${ticker} ${animationDuration}s linear infinite;
+`;
+const NavUlShadow = styled(NavUl)`
+  transform: translate(100%, 0);
+  animation: ${tickerShadow} ${animationDuration}s linear infinite;
 `;
 const NavLi = styled.li`
-  margin-left: 20px;
   display: flex;
   align-items: center;
+  margin-left: 20px;
 
   &::before {
     content: '';
@@ -66,6 +93,10 @@ const NavLi = styled.li`
     display: block;
     margin-right: 20px;
   }
+
+  a {
+    white-space: nowrap;
+  }
 `;
 
 const Footer = () => {
@@ -73,9 +104,14 @@ const Footer = () => {
     <FooterEl className="container">
       <Nav>
         <p>projects I developed:</p>
-        <NavUl>
-          {links.map(link => <NavLi key={link.link}><Link link={link.link} linkText={link.linkText}/></NavLi>)}
-        </NavUl>
+        <TickerWrapper>
+          <NavUl>
+            {links.map(link => <NavLi key={link.link}><Link link={link.link} linkText={link.linkText}/></NavLi>)}
+          </NavUl>
+          <NavUlShadow>
+            {links.map(link => <NavLi key={link.link}><Link link={link.link} linkText={link.linkText}/></NavLi>)}
+          </NavUlShadow>
+        </TickerWrapper>
       </Nav>
     </FooterEl>
   );

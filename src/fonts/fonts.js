@@ -6,6 +6,7 @@ import WorkSansFont400Woff2 from './work-sans-v8-latin-regular.woff2';
 import WorkSansFont500Woff from './work-sans-v8-latin-500.woff';
 import WorkSansFont500Woff2 from './work-sans-v8-latin-500.woff2';
 
+// TODO: to prevent flicker on pageLoad, use a css file instead (see https://dev.to/philschonholzer/don-t-use-font-face-in-styled-components-with-gatsbyjs-1hkg)
 export default createGlobalStyle`
     /* work-sans-300 - latin */
     @font-face {
