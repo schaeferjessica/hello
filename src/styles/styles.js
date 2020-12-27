@@ -219,6 +219,10 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
+  * {
+    cursor: none !important;
+  }
+  
   .sr-only {
     position: absolute;
     width: 1px;

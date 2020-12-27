@@ -11,10 +11,6 @@ const StyledLink = styled.a`
   @media ${devices.tablet} { 
     font-size: 12px;
   }
-
-  &:hover {
-    color: red;
-  }
 `;
 
 const Link = ({link, linkText}) => <StyledLink href={link} target="_blank" rel="noopener noreferrer">{linkText}</StyledLink>;
