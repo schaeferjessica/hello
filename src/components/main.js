@@ -1,8 +1,12 @@
 
-import * as React from "react"
+import React, { useContext } from "react";
+import ThemeContext from '../styles/themecontext';
 
 const Main = () => {
-  return <main>Hallo Welt</main>;
+  const color = useContext(ThemeContext);
+  return (
+    <main>Hallo Welt {color.foreground}</main>
+  );
 }
 
 export default Main

@@ -45,5 +45,7 @@ export default createGlobalStyle`
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      color: ${props => props.color.foreground};
+      background-color: ${props => props.color.background};
     }
 `;

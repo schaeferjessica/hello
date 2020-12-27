@@ -1,8 +1,8 @@
 
-import * as React from "react"
+import React, {useContext} from "react"
 import Link from "./base/link";
 import styled, { keyframes } from 'styled-components';
-import { colors } from '../styles/color';
+import ThemeContext from '../styles/themecontext';
 
 // data
 const links = [
@@ -37,7 +37,7 @@ const FooterEl = styled.footer`
   padding-top: 20px;
   padding-right: 0;
   padding-bottom: 20px;
-  border-top: 1px solid ${colors.black};
+  border-top: 1px solid ${props => props.color};
 `;
 const Nav = styled.nav`
   display: flex;
@@ -89,7 +89,7 @@ const NavLi = styled.li`
     content: '';
     width: 10px;
     height: 4px;
-    background-color: ${colors.black};
+    background-color: ${props => props.color};
     display: block;
     margin-right: 20px;
   }
@@ -100,16 +100,18 @@ const NavLi = styled.li`
 `;
 
 const Footer = () => {
+  const {color} = useContext(ThemeContext);
+
   return (
-    <FooterEl className="container">
+    <FooterEl className="container" color={color.foreground}>
       <Nav>
         <p>projects I developed:</p>
         <TickerWrapper>
           <NavUl>
-            {links.map(link => <NavLi key={link.link}><Link link={link.link} linkText={link.linkText}/></NavLi>)}
+            {links.map(link => <NavLi key={link.link} color={color.foreground}><Link link={link.link} linkText={link.linkText}/></NavLi>)}
           </NavUl>
           <NavUlShadow>
-            {links.map(link => <NavLi key={link.link}><Link link={link.link} linkText={link.linkText}/></NavLi>)}
+            {links.map(link => <NavLi key={link.link} color={color.foreground}><Link link={link.link} linkText={link.linkText}/></NavLi>)}
           </NavUlShadow>
         </TickerWrapper>
       </Nav>
