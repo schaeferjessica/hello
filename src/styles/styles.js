@@ -6,7 +6,9 @@ export default createGlobalStyle`
   *,
   *::before,
   *::after {
-    cursor: none !important;
+    @media ${devices.mobileMin} {
+      cursor: none !important;
+    }
   }
   
   .sr-only {
