@@ -54,6 +54,10 @@ const TickerWrapper = styled.div`
   overflow: hidden;
   width: 100%;
   height: 30px;
+
+  &:hover ul {
+    animation-play-state: paused;
+  }
 `;
 
 const ticker = keyframes`
