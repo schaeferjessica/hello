@@ -20,6 +20,7 @@ export default createGlobalStyle`
 
 
   html {
+    font-weight: 400;
     font-size: 20px;
     line-height: 1.5;
     font-family: 'Inter', 'Roboto', 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell',
