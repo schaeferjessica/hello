@@ -55,6 +55,7 @@ const NavLi = styled.li`
     margin-right: 20px;
   }
 `;
+
 const rotate = keyframes`
   0% {
     transform: scaleX(1) scaleY(1) translateX(0px) translateY(0px) rotate(0deg);
@@ -76,6 +77,54 @@ const NavMode = styled.button`
   animation: ${rotate} 5s ease-in-out infinite;
 `;
 
+const spotify = keyframes`
+  0% {
+    height: 100%;
+  }
+
+  50% {
+    height: 10%;
+  }
+
+  100% {
+    height: 100%;
+  }
+`;
+const NavSpotify = styled.a`
+  display: flex;
+  align-items: flex-end;
+  height: 20px;
+  margin-left: 20px;
+
+  .line {
+    width: 1px;
+    height: 100%;
+    display: block;
+    background-color: ${props => props.color};
+    animation: ${spotify} 800ms ease-in-out infinite;
+
+    &:not(:last-child) {
+      margin-right: 4px;
+    }
+
+    &-1 {
+      animation-delay: 70ms;
+    }
+    
+    &-2 {
+      animation-delay: 170ms;
+    }
+
+    &-3 {
+      animation-delay: 120ms;
+    }
+
+    &-4 {
+      animation-delay: 250ms;
+    }
+  }
+`;
+
 const Header = () => {
   const {color, toggleTheme} = useContext(ThemeContext);
 
@@ -89,9 +138,18 @@ const Header = () => {
       </NavMode>
       <Nav>
         <p>contact me here:</p>
+        
         <NavUl>
           {links.map(link => <NavLi key={link.link} color={color.foreground}><Link link={link.link} linkText={link.linkText}/></NavLi>)}
         </NavUl>
+        
+        <NavSpotify color={color.foreground} href="https://open.spotify.com/playlist/2k2VFAQUBw77Rv7niYMYIw?si=J7QrnQugTie05hf9S05JjQ" target="_blank" rel="noopener noreferrer">
+          <span className="line line-1" aria-hidden="true"></span>
+          <span className="line line-2" aria-hidden="true"></span>
+          <span className="line line-3" aria-hidden="true"></span>
+          <span className="line line-4" aria-hidden="true"></span>
+          <span className="sr-only">open soptify playlist</span>
+        </NavSpotify>
       </Nav>
     </NavHeader>
   );
