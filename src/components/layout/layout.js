@@ -1,11 +1,11 @@
+import '../../../static/fonts.css';
 import React, { useEffect, useRef, useState }  from "react";
-import GlobalFonts from '../../fonts/fonts';
-import GlobalNormalizer from '../../styles/styles';
+import GlobalNormalizer from '../../styles/normalize';
+import GlobalStyles from '../../styles/styles';
 import GlobalContainer from '../../styles/container';
 import styled from 'styled-components';
 import { colors } from '../../styles/color';
 import ThemeContext from '../../styles/themecontext';
-
 const Cursor = styled.div`
     width: 53px;
     height: 54px;
@@ -51,8 +51,8 @@ const Layout = ({children}) => {
 
   return (
     <ThemeContext.Provider value={{color, toggleTheme}}>
-      <GlobalFonts color={color} />
       <GlobalNormalizer />
+      <GlobalStyles color={color} />
       <GlobalContainer />
       <ThemeContext.Consumer>
         {({color}) => (
