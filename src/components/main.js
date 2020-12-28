@@ -6,6 +6,7 @@ import { devices } from '../styles/breakpoints';
 const MainContainer = styled.main`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
 `;
 const H1 = styled.h1`
@@ -19,6 +20,11 @@ const H1 = styled.h1`
 const Text = styled.p`
   font-weight: 400;
   font-size: 65px;
+  display: block;
+
+  @media ${devices.mobile} {
+    font-size: 35px;
+  }
 `;
 const SVG = styled.svg`
   margin-right: 20px;
@@ -34,6 +40,12 @@ const SVG = styled.svg`
 
 const Button = styled.button`
   color: ${(props) => props.color.foreground};
+  font-weight: 400;
+  font-size: 65px;
+
+  @media ${devices.mobile} {
+    font-size: 35px;
+  }
 `;
 
 const Main = () => {
@@ -61,13 +73,16 @@ const Main = () => {
           read {isOpen ? 'less' : 'more'}
         </Button>
       </H1>
-      {isOpen ? (
-        <Text>
-          I have always been a creative person and a technology enthusiast. I
-          was lucky to start my career at 3pc, where I got passionate about
-          frontend development.
-        </Text>
-      ) : null}
+
+      <Text
+        style={{
+          display: isOpen ? 'block' : 'none',
+        }}
+      >
+        I have always been a creative person and a technology enthusiast. I was
+        lucky to start my career at 3pc, where I got passionate about frontend
+        development.
+      </Text>
     </MainContainer>
   );
 };
