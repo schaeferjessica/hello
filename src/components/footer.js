@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Link from './base/link';
 import styled, { keyframes } from 'styled-components';
 import ThemeContext from '../styles/themecontext';
+import { devices } from '../styles/breakpoints';
 
 // data
 const links = [
@@ -33,20 +34,27 @@ const links = [
 
 // styles
 const FooterEl = styled.footer`
-  padding-top: 20px;
   padding-right: 0;
-  padding-bottom: 20px;
-  border-top: 1px solid ${(props) => props.color};
+  padding-left: 0;
+
+  > p {
+    white-space: nowrap;
+    font-size: 16px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+
+    @media ${devices.mobile} {
+      font-size: 14px;
+    }
+  }
 `;
 const Nav = styled.nav`
   display: flex;
   align-items: center;
   position: relative;
-
-  > p {
-    white-space: nowrap;
-    margin-right: 20px;
-  }
+  border-top: 1px solid ${(props) => props.color};
+  padding-top: 20px;
+  padding-bottom: 20px;
 `;
 const TickerWrapper = styled.div`
   position: relative;
@@ -107,8 +115,8 @@ const Footer = () => {
 
   return (
     <FooterEl className="container" color={color.foreground}>
+      <p>projects I worked on:</p>
       <Nav>
-        <p>projects I developed:</p>
         <TickerWrapper>
           <NavUl>
             {links.map((link) => (

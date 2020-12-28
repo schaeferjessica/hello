@@ -3,7 +3,9 @@ import { devices } from './breakpoints';
 
 export default createGlobalStyle`
   // adding own globals styles //----------------------------------------
-  * {
+  *,
+  *::before,
+  *::after {
     cursor: none !important;
   }
   
@@ -31,11 +33,11 @@ export default createGlobalStyle`
     background-color: ${(props) => props.color.background};
 
     @media ${devices.tablet} { 
-      font-size: 18px;
+      font-size: 16px;
     }
 
     @media ${devices.mobile} { 
-      font-size: 16px;
+      font-size: 14px;
     }
   }
 `;

@@ -6,6 +6,8 @@ import GlobalContainer from '../../styles/container';
 import styled from 'styled-components';
 import { colors } from '../../styles/color';
 import ThemeContext from '../../styles/themecontext';
+import { devices } from '../../styles/breakpoints';
+
 const Cursor = styled.div`
   width: 53px;
   height: 54px;
@@ -14,6 +16,10 @@ const Cursor = styled.div`
   left: 0;
   z-index: 9;
   pointer-events: none;
+
+  @media ${devices.mobile} {
+    display: none;
+  }
 `;
 
 // markup

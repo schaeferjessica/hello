@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Link from './base/link';
 import styled, { keyframes } from 'styled-components';
 import ThemeContext from '../styles/themecontext';
+import { devices } from '../styles/breakpoints';
 
 // data
 const links = [
@@ -32,6 +33,12 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media ${devices.mobile} {
+    p {
+      display: none;
+    }
+  }
 `;
 const NavUl = styled.ul`
   display: flex;
@@ -45,6 +52,14 @@ const NavLi = styled.li`
   display: flex;
   align-items: center;
 
+  @media ${devices.mobile} {
+    margin-left: 15px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
   &::before {
     content: '';
     width: 10px;
@@ -52,6 +67,16 @@ const NavLi = styled.li`
     background-color: ${(props) => props.color};
     display: block;
     margin-right: 20px;
+
+    @media ${devices.mobile} {
+      margin-right: 15px;
+    }
+  }
+
+  @media ${devices.mobile} {
+    &:first-child::before {
+      display: none;
+    }
   }
 `;
 
@@ -69,11 +94,16 @@ const rotate = keyframes`
   }
 `;
 const NavMode = styled.button`
-  margin-left: 20px;
   display: flex;
   align-items: center;
   transform: scaleX(1) scaleY(1) translateX(0px) translateY(0px) rotate(0deg);
   animation: ${rotate} 5s ease-in-out infinite;
+
+  @media ${devices.mobile} {
+    transform: scaleX(0.7) scaleY(0.7) translateX(0px) translateY(0px)
+      rotate(0deg);
+    animation: inherit;
+  }
 `;
 
 const spotify = keyframes`
@@ -94,6 +124,10 @@ const NavSpotify = styled.a`
   align-items: flex-end;
   height: 20px;
   margin-left: 20px;
+
+  @media ${devices.mobile} {
+    display: none;
+  }
 
   .line {
     width: 1px;

@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import ThemeContext from '../styles/themecontext';
+import { devices } from '../styles/breakpoints';
 
 const MainContainer = styled.main`
   display: flex;
@@ -10,10 +11,25 @@ const MainContainer = styled.main`
 const H1 = styled.h1`
   font-weight: 400;
   font-size: 65px;
+
+  @media ${devices.mobile} {
+    font-size: 35px;
+  }
+`;
+const Text = styled.p`
+  font-weight: 400;
+  font-size: 65px;
 `;
 const SVG = styled.svg`
   margin-right: 20px;
   margin-left: 20px;
+
+  @media ${devices.mobile} {
+    width: 50px;
+    height: 18px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
 `;
 
 const Button = styled.button`
@@ -21,13 +37,14 @@ const Button = styled.button`
 `;
 
 const Main = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const { color } = useContext(ThemeContext);
 
   return (
     <MainContainer className="container">
       <H1>
         Hello. I am Jessica a frontend developer from Berlin.
-        <Button color={color}>
+        <Button color={color} onClick={() => setIsOpen(!isOpen)}>
           <SVG
             width="94"
             height="30"
@@ -41,9 +58,16 @@ const Main = () => {
               fill={color.foreground}
             />
           </SVG>
-          read more
+          read {isOpen ? 'less' : 'more'}
         </Button>
       </H1>
+      {isOpen ? (
+        <Text>
+          I have always been a creative person and a technology enthusiast. I
+          was lucky to start my career at 3pc, where I got passionate about
+          frontend development.
+        </Text>
+      ) : null}
     </MainContainer>
   );
 };
