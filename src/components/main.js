@@ -1,12 +1,11 @@
-
-import React, { useContext } from "react";
-import ThemeContext from '../styles/themecontext';
+import React from 'react';
 
 const Main = () => {
-  const color = useContext(ThemeContext);
   return (
-    <main>Hallo Welt {color.foreground}</main>
+    <main className="container">
+      <h1>Hello. I am Jessica a frontend developer from Berlin.</h1>
+    </main>
   );
-}
+};
 
-export default Main
+export default Main;

@@ -1,10 +1,10 @@
 export const colors = {
   light: {
-    foreground: "#222",
-    background: "#fff"
+    foreground: '#222',
+    background: '#fff',
   },
   dark: {
-    foreground: "#fff",
-    background: "#222"
-  }
+    foreground: '#fff',
+    background: '#222',
+  },
 };

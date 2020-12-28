@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import Layout from '../components/layout/layout';
 import Header from '../components/header';
 import Main from '../components/main';
@@ -13,10 +13,10 @@ const Wrapper = styled.div`
   width: 100%;
   min-height: 100vh;
   grid-template-areas:
-    "header"
-    "main"
-    "footer";
-  
+    'header'
+    'main'
+    'footer';
+
   header {
     width: 100%;
     grid-area: header;
@@ -36,12 +36,12 @@ const IndexPage = () => {
   return (
     <Layout>
       <Wrapper>
-        <Header/>
-        <Main/>
-        <Footer/>
+        <Header />
+        <Main />
+        <Footer />
       </Wrapper>
     </Layout>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;

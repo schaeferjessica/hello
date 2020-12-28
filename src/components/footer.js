@@ -1,6 +1,5 @@
-
-import React, {useContext} from "react"
-import Link from "./base/link";
+import React, { useContext } from 'react';
+import Link from './base/link';
 import styled, { keyframes } from 'styled-components';
 import ThemeContext from '../styles/themecontext';
 
@@ -30,14 +29,14 @@ const links = [
     link: 'https://www.dhm.de/',
     linkText: 'Deutsches Historisches Museum',
   },
-]; 
+];
 
 // styles
 const FooterEl = styled.footer`
   padding-top: 20px;
   padding-right: 0;
   padding-bottom: 20px;
-  border-top: 1px solid ${props => props.color};
+  border-top: 1px solid ${(props) => props.color};
 `;
 const Nav = styled.nav`
   display: flex;
@@ -93,7 +92,7 @@ const NavLi = styled.li`
     content: '';
     width: 10px;
     height: 4px;
-    background-color: ${props => props.color};
+    background-color: ${(props) => props.color};
     display: block;
     margin-right: 20px;
   }
@@ -104,7 +103,7 @@ const NavLi = styled.li`
 `;
 
 const Footer = () => {
-  const {color} = useContext(ThemeContext);
+  const { color } = useContext(ThemeContext);
 
   return (
     <FooterEl className="container" color={color.foreground}>
@@ -112,15 +111,23 @@ const Footer = () => {
         <p>projects I developed:</p>
         <TickerWrapper>
           <NavUl>
-            {links.map(link => <NavLi key={link.link} color={color.foreground}><Link link={link.link} linkText={link.linkText}/></NavLi>)}
+            {links.map((link) => (
+              <NavLi key={link.link} color={color.foreground}>
+                <Link link={link.link} linkText={link.linkText} />
+              </NavLi>
+            ))}
           </NavUl>
           <NavUlShadow>
-            {links.map(link => <NavLi key={link.link} color={color.foreground}><Link link={link.link} linkText={link.linkText}/></NavLi>)}
+            {links.map((link) => (
+              <NavLi key={link.link} color={color.foreground}>
+                <Link link={link.link} linkText={link.linkText} />
+              </NavLi>
+            ))}
           </NavUlShadow>
         </TickerWrapper>
       </Nav>
     </FooterEl>
   );
-}
+};
 
 export default Footer;

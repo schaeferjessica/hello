@@ -26,8 +26,8 @@ export default createGlobalStyle`
     'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: ${props => props.color.foreground};
-    background-color: ${props => props.color.background};
+    color: ${(props) => props.color.foreground};
+    background-color: ${(props) => props.color.background};
 
     @media ${devices.tablet} { 
       font-size: 18px;
