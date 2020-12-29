@@ -27,11 +27,34 @@ const Layout = ({ children }) => {
   const cursorEl = useRef(null);
   const [cursorState, setCursorState] = useState(false);
   const [theme, setTheme] = useState('light');
+  const [themeColor, setThemeColor] = useState(colors);
+
+  // change between light and dark theme
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
-  const color = theme === 'light' ? colors.light : colors.dark;
 
+  // animate theme colors to spefic colors
+  const changeTheme = ({ foreground, background }) => {
+    setThemeColor({
+      light: {
+        foreground,
+        background: '#fff',
+      },
+      dark: {
+        foreground,
+        background,
+      },
+    });
+  };
+
+  // animate reset to default color theme
+  const resetTheme = () => setThemeColor(colors);
+
+  // create value for theme provider
+  const color = theme === 'light' ? themeColor.light : themeColor.dark;
+
+  // let custom cursor follow mouse
   const bindMouseEvents = (cursor) => {
     document.addEventListener('mousemove', (e) => {
       cursor.current.style.top = `${e.clientY}px`;
@@ -56,7 +79,9 @@ const Layout = ({ children }) => {
   }, []);
 
   return (
-    <ThemeContext.Provider value={{ color, toggleTheme }}>
+    <ThemeContext.Provider
+      value={{ color, toggleTheme, changeTheme, resetTheme }}
+    >
       <GlobalNormalizer />
       <GlobalStyles color={color} />
       <GlobalContainer />

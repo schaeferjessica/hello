@@ -3,6 +3,7 @@ import Link from './base/link';
 import styled, { keyframes } from 'styled-components';
 import ThemeContext from '../styles/themecontext';
 import { devices } from '../styles/breakpoints';
+import { colorTransition } from '../styles/color';
 
 // data
 const links = [
@@ -25,7 +26,7 @@ const NavHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid ${(props) => props.color};
+  border-bottom: 1px solid;
   padding-top: 10px;
   padding-bottom: 10px;
 `;
@@ -67,6 +68,7 @@ const NavLi = styled.li`
     background-color: ${(props) => props.color};
     display: block;
     margin-right: 20px;
+    ${colorTransition}
 
     @media ${devices.mobile} {
       margin-right: 15px;
@@ -104,6 +106,10 @@ const NavMode = styled.button`
       rotate(0deg);
     animation: inherit;
   }
+
+  path {
+    ${colorTransition}
+  }
 `;
 
 const spotify = keyframes`
@@ -135,6 +141,7 @@ const NavSpotify = styled.a`
     display: block;
     background-color: ${(props) => props.color};
     animation: ${spotify} 800ms ease-in-out infinite;
+    ${colorTransition}
 
     &:not(:last-child) {
       margin-right: 4px;

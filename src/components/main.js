@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { devices } from '../styles/breakpoints';
 import ThemeContext from '../styles/themecontext';
 import anime from 'animejs/lib/anime.es.js';
+import { colorTransition } from '../styles/color';
 
 const MainContainer = styled.main`
   display: flex;
@@ -23,7 +24,7 @@ const H1 = styled.h1`
   }
 
   b {
-    font-weight: 500;
+    font-weight: 400;
   }
 
   .hello {
@@ -39,13 +40,32 @@ const H1 = styled.h1`
 
   a {
     color: ${(props) => props.color};
+    ${colorTransition}
   }
 `;
 
 const Main = () => {
   const hallo = useRef(null);
   const intro = useRef(null);
-  const { color } = useContext(ThemeContext);
+  const { color, changeTheme, resetTheme } = useContext(ThemeContext);
+  const colorObj = {
+    red: {
+      foreground: '#FFAAC3',
+      background: '#FFE7F3',
+    },
+    blue: {
+      foreground: '#7E9DFF',
+      background: '#ECFFFC',
+    },
+    yellow: {
+      foreground: '#45E2F6',
+      background: '#FFFBCC',
+    },
+    green: {
+      foreground: '#37C198',
+      background: '#F3FFDF',
+    },
+  };
 
   useEffect(() => {
     anime.timeline().add({
@@ -69,12 +89,27 @@ const Main = () => {
   return (
     <MainContainer className="container">
       <H1 color={color.foreground}>
-        <b ref={hallo} className="hello">
+        <b
+          ref={hallo}
+          className="hello"
+          onMouseEnter={() => changeTheme(colorObj.blue)}
+          onMouseLeave={() => resetTheme()}
+        >
           Hello.
         </b>{' '}
         <span ref={intro}>
-          I am <b>Jessica</b> a <b>frontend developer</b> at{' '}
-          <b>
+          I am <b>Jessica</b> a{' '}
+          <b
+            onMouseEnter={() => changeTheme(colorObj.yellow)}
+            onMouseLeave={() => resetTheme()}
+          >
+            frontend developer
+          </b>{' '}
+          at{' '}
+          <b
+            onMouseEnter={() => changeTheme(colorObj.red)}
+            onMouseLeave={() => resetTheme()}
+          >
             <a
               href="https://3pc.de/agentur/team/"
               target="_blank"
@@ -83,7 +118,14 @@ const Main = () => {
               3pc
             </a>
           </b>{' '}
-          from <b>Berlin</b>.
+          from{' '}
+          <b
+            onMouseEnter={() => changeTheme(colorObj.green)}
+            onMouseLeave={() => resetTheme()}
+          >
+            Berlin
+          </b>
+          .
         </span>
       </H1>
     </MainContainer>

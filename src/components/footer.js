@@ -3,6 +3,7 @@ import Link from './base/link';
 import styled, { keyframes } from 'styled-components';
 import ThemeContext from '../styles/themecontext';
 import { devices } from '../styles/breakpoints';
+import { colorTransition } from '../styles/color';
 
 // data
 const links = [
@@ -52,7 +53,7 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   position: relative;
-  border-top: 1px solid ${(props) => props.color};
+  border-top: 1px solid;
   padding-top: 20px;
   padding-bottom: 20px;
 `;
@@ -103,6 +104,7 @@ const NavLi = styled.li`
     background-color: ${(props) => props.color};
     display: block;
     margin-right: 20px;
+    ${colorTransition}
   }
 
   a {

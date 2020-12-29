@@ -8,3 +8,6 @@ export const colors = {
     background: '#222',
   },
 };
+
+export const colorTransition =
+  'transition: color 0.6s ease-in-out, background-color 0.6s ease-in-out, fill 0.6s ease-in-out; border 0.6s ease-in-out;';

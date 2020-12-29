@@ -1,11 +1,13 @@
 import { createGlobalStyle } from 'styled-components';
 import { devices } from './breakpoints';
+import { colorTransition } from './color';
 
 export default createGlobalStyle`
   // adding own globals styles //----------------------------------------
   *,
   *::before,
   *::after {
+
     @media ${devices.mobileMin} {
       cursor: none !important;
     }
@@ -33,6 +35,7 @@ export default createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     color: ${(props) => props.color.foreground};
     background-color: ${(props) => props.color.background};
+    ${colorTransition}
 
     @media ${devices.tablet} { 
       font-size: 16px;
