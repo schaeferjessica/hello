@@ -53,6 +53,10 @@ const Main = () => {
       foreground: '#FFAAC3',
       background: '#FFE7F3',
     },
+    orange: {
+      foreground: '#FFBBAC',
+      background: '#F3FFDF',
+    },
     blue: {
       foreground: '#7E9DFF',
       background: '#ECFFFC',
@@ -98,7 +102,15 @@ const Main = () => {
           Hello.
         </b>{' '}
         <span ref={intro}>
-          I am <b>Jessica</b> a{' '}
+          I am{' '}
+          <b
+            onMouseEnter={() => changeTheme(colorObj.orange)}
+            onMouseLeave={() => resetTheme()}
+          >
+            {' '}
+            Jessica
+          </b>{' '}
+          a{' '}
           <b
             onMouseEnter={() => changeTheme(colorObj.yellow)}
             onMouseLeave={() => resetTheme()}
