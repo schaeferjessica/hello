@@ -44,6 +44,8 @@ const FooterEl = styled.footer`
     padding-left: 20px;
     padding-bottom: 20px;
     font-weight: 500;
+    color: ${(props) => props.color};
+    ${colorTransition}
 
     @media ${devices.mobile} {
       font-size: 14px;
@@ -54,7 +56,8 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   position: relative;
-  border-top: 1px solid;
+  border-top: 1px solid ${(props) => props.color};
+  transition: border 0.6s ease-in-out;
   padding-top: 20px;
   padding-bottom: 20px;
 `;
@@ -119,7 +122,7 @@ const Footer = () => {
   return (
     <FooterEl className="container" color={color.foreground}>
       <p>projects I worked on:</p>
-      <Nav>
+      <Nav color={color.foreground}>
         <TickerWrapper>
           <NavUl>
             {links.map((link) => (

@@ -31,6 +31,8 @@ const H1 = styled.h1`
     transform-origin: 50% 100%;
     display: inline-block;
     transform: scale(0);
+    color: ${(props) => props.color};
+    ${colorTransition}
   }
 
   span {

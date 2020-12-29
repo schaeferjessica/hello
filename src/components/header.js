@@ -26,7 +26,8 @@ const NavHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid ${(props) => props.color};
+  transition: border 0.6s ease-in-out;
   padding-top: 10px;
   padding-bottom: 10px;
 `;
@@ -34,7 +35,12 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: 500;
+
+  p {
+    font-weight: 500;
+    color: ${(props) => props.color};
+    ${colorTransition}
+  }
 
   @media ${devices.mobile} {
     p {
@@ -50,12 +56,12 @@ const NavUl = styled.ul`
   padding: 0;
 `;
 const NavLi = styled.li`
-  margin-left: 20px;
+  margin-left: 40px;
   display: flex;
   align-items: center;
 
   @media ${devices.mobile} {
-    margin-left: 15px;
+    margin-left: 20px;
 
     &:first-child {
       margin-left: 0;
@@ -130,7 +136,7 @@ const NavSpotify = styled.a`
   display: flex;
   align-items: flex-end;
   height: 20px;
-  margin-left: 20px;
+  margin-left: 40px;
 
   @media ${devices.mobile} {
     display: none;
@@ -186,7 +192,7 @@ const Header = () => {
           />
         </svg>
       </NavMode>
-      <Nav>
+      <Nav color={color.foreground}>
         <p>contact me here:</p>
 
         <NavUl>
