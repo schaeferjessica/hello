@@ -5,7 +5,7 @@ import { colorTransition } from '../../styles/color';
 
 const StyledLink = styled.a`
   color: ${(props) => props.color.foreground};
-  font-weight: 400;
+  font-weight: 500;
   text-decoration: none;
   ${colorTransition}
 `;

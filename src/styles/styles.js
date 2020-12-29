@@ -38,11 +38,11 @@ export default createGlobalStyle`
     ${colorTransition}
 
     @media ${devices.tablet} { 
-      font-size: 16px;
+      font-size: 18px;
     }
 
     @media ${devices.mobile} { 
-      font-size: 14px;
+      font-size: 16px;
     }
   }
 `;

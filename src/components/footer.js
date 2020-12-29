@@ -43,6 +43,7 @@ const FooterEl = styled.footer`
     font-size: 16px;
     padding-left: 20px;
     padding-bottom: 20px;
+    font-weight: 500;
 
     @media ${devices.mobile} {
       font-size: 14px;

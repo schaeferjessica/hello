@@ -34,6 +34,7 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: 500;
 
   @media ${devices.mobile} {
     p {
@@ -136,7 +137,7 @@ const NavSpotify = styled.a`
   }
 
   .line {
-    width: 1px;
+    width: 2px;
     height: 100%;
     display: block;
     background-color: ${(props) => props.color};

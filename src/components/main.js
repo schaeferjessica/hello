@@ -15,16 +15,16 @@ const MainContainer = styled.main`
 `;
 const H1 = styled.h1`
   font-weight: 300;
-  font-size: 65px;
-  line-height: 90px;
+  font-size: 95px;
+  line-height: 125px;
 
   @media ${devices.mobile} {
-    font-size: 35px;
-    line-height: 60px;
+    font-size: 45px;
+    line-height: 70px;
   }
 
   b {
-    font-weight: 400;
+    font-weight: 600;
   }
 
   .hello {
