@@ -28,11 +28,16 @@ const H1 = styled.h1`
   }
 
   .hello {
-    transform-origin: 50% 100%;
     display: inline-block;
-    transform: scale(0);
-    color: ${(props) => props.color};
-    ${colorTransition}
+
+    span {
+      display: inline-block;
+      transform-origin: 50% 100%;
+      opacity: 1;
+      transform: scale(0);
+      color: ${(props) => props.color};
+      ${colorTransition}
+    }
   }
 
   span {
@@ -45,6 +50,91 @@ const H1 = styled.h1`
     ${colorTransition}
   }
 `;
+
+let target = null;
+let state = {};
+
+const run = () => {
+  requestAnimationFrame(run);
+
+  const { isMagnetic, transform, mouse, width, height, ease, scale } = state;
+
+  transform.x = isMagnetic
+    ? ((mouse.x - width / 2) / width) * transform.max
+    : 0;
+  transform.y = isMagnetic
+    ? ((mouse.y - height / 2) / height) * transform.max
+    : 0;
+  transform.scale = isMagnetic ? scale : 1;
+
+  // basic linear interpolation
+  // https://www.youtube.com/watch?v=yWhgniVHROw
+  ease.x += (transform.x - ease.x) * ease.value;
+  ease.y += (transform.y - ease.y) * ease.value;
+  ease.scale += (transform.scale - ease.scale) * ease.value;
+
+  Object.assign(target.style, {
+    transform: `
+      translate(
+        ${ease.x.toFixed(2)}px,
+        ${ease.y.toFixed(2)}px
+      )
+      translateZ(0)
+      scale(
+        ${ease.scale.toFixed(2)}
+      )`,
+  });
+};
+
+const isMagnetic = (x, y) => {
+  const { bounds } = state;
+
+  const centerX = bounds.left + bounds.width / 2;
+  const centerY = bounds.top + bounds.height / 2;
+
+  // use pythagorean theorem to calculate
+  // cursor distance from center of btn
+  // a^2 + b^2 = c^2
+  const a = Math.abs(centerX - x);
+  const b = Math.abs(centerY - y);
+  const c = Math.sqrt(a * a + b * b);
+
+  // true if cursor distance from center of btn is
+  // equal to btn radius + threshold
+  const isHover = c < bounds.width / 2 + state.threshold;
+
+  if (!state.history && isHover) {
+    Object.assign(state, {
+      threshold: state.threshold * state.ratio,
+      history: true,
+    });
+  } else if (state.history && !isHover) {
+    Object.assign(state, {
+      threshold: state.threshold / state.ratio,
+      history: false,
+    });
+  }
+
+  return isHover;
+};
+
+const mouseMove = ({ pageX, pageY }) => {
+  Object.assign(state, {
+    mouse: {
+      x: pageX,
+      y: pageY,
+    },
+    isMagnetic: isMagnetic(pageX, pageY, state),
+  });
+};
+
+const resize = () => {
+  Object.assign(state, {
+    bounds: target.getBoundingClientRect(),
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+};
 
 const Main = () => {
   const hallo = useRef(null);
@@ -95,7 +185,7 @@ const Main = () => {
 
   useEffect(() => {
     anime.timeline().add({
-      targets: hallo.current,
+      targets: hallo.current.children,
       scale: [0, 1],
       duration: 1500,
       elasticity: 600,
@@ -110,13 +200,53 @@ const Main = () => {
       duration: 1400,
       delay: 1000,
     });
+
+    target = hallo.current;
+    state = {
+      bounds: target.getBoundingClientRect(),
+      threshold: parseInt(target.dataset.threshold),
+      ratio: parseInt(target.dataset.ratio),
+      isMagnetic: false,
+      mouse: {
+        x: 0,
+        y: 0,
+      },
+      ease: {
+        x: 0,
+        y: 0,
+        scale: 1,
+        value: target.dataset.ease,
+      },
+      transform: {
+        x: 0,
+        y: 0,
+        scale: 1,
+        max: target.dataset.max,
+      },
+      width: window.innerWidth,
+      height: window.innerHeight,
+      history: false,
+      scale: target.dataset.scale,
+    };
+
+    document.addEventListener('mousemove', mouseMove);
+    window.addEventListener('resize', resize);
+    run();
   }, []);
 
   return (
     <MainContainer className="container">
       <H1 color={color.foreground}>
-        <b ref={hallo} className="hello">
-          Hello.
+        <b
+          className="hello"
+          ref={hallo}
+          data-threshold="600" // the range where the element will still follow the mouse
+          data-ratio="7" // wtf is this?
+          data-max="20" // maximum movement from original position
+          data-scale="1" // if you want to scale the element
+          data-ease="0.225"
+        >
+          <span>Hello.</span>
         </b>{' '}
         <span ref={intro}>
           I am{' '}
