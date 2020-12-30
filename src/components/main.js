@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useContext } from 'react';
+import React, { useRef, useEffect, useContext, useState } from 'react';
 import styled from 'styled-components';
 import { devices } from '../styles/breakpoints';
 import ThemeContext from '../styles/themecontext';
@@ -29,6 +29,7 @@ const H1 = styled.h1`
 
   .hello {
     display: inline-block;
+    margin-bottom: 20px;
 
     span {
       display: inline-block;
@@ -49,11 +50,30 @@ const H1 = styled.h1`
     color: ${(props) => props.color};
     ${colorTransition}
   }
+
+  .name {
+    position: relative;
+    z-index: 1;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 400px;
+      opacity: 0;
+      pointer-events: none;
+
+      &.is-active {
+        opacity: 1;
+      }
+    }
+  }
 `;
 
+// magnetic word
 let target = null;
 let state = {};
-
 const run = () => {
   requestAnimationFrame(run);
 
@@ -85,7 +105,6 @@ const run = () => {
       )`,
   });
 };
-
 const isMagnetic = (x, y) => {
   const { bounds } = state;
 
@@ -117,7 +136,6 @@ const isMagnetic = (x, y) => {
 
   return isHover;
 };
-
 const mouseMove = ({ pageX, pageY }) => {
   Object.assign(state, {
     mouse: {
@@ -127,7 +145,6 @@ const mouseMove = ({ pageX, pageY }) => {
     isMagnetic: isMagnetic(pageX, pageY, state),
   });
 };
-
 const resize = () => {
   Object.assign(state, {
     bounds: target.getBoundingClientRect(),
@@ -139,6 +156,8 @@ const resize = () => {
 const Main = () => {
   const hallo = useRef(null);
   const intro = useRef(null);
+  const name = useRef(null);
+  const nameImage = useRef(null);
   const { color, changeTheme, resetTheme } = useContext(ThemeContext);
   const colorObj = {
     pink: {
@@ -181,6 +200,32 @@ const Main = () => {
         background: '#121738',
       },
     },
+  };
+
+  // image hover
+  const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
+  const puddleMouseEnter = () => {
+    nameImage.current.classList.add('is-active');
+    name.current.classList.add('is-active');
+  };
+  const puddleMouseMove = (e) => {
+    const nameRect = name.current.getBoundingClientRect();
+    // We have to clamp these values, because sometimes they return faulty values
+    const clampedX = clamp(e.nativeEvent.offsetX, 0, nameRect.width * 2);
+    const clampedY = clamp(e.nativeEvent.offsetY, 0, nameRect.height);
+    nameImage.current.style.transform = `translate3d(calc(-100% + ${clampedX}px), calc(-50% + ${clampedY}px), 0)`;
+  };
+  const puddleMouseLeave = () => {
+    nameImage.current.classList.remove('is-active');
+    name.current.classList.remove('is-active');
+  };
+  const handleMouseEnter = () => {
+    changeTheme(colorObj.pink);
+    puddleMouseEnter();
+  };
+  const handleMouseLeave = () => {
+    resetTheme();
+    puddleMouseLeave();
   };
 
   useEffect(() => {
@@ -242,7 +287,7 @@ const Main = () => {
           ref={hallo}
           data-threshold="600" // the range where the element will still follow the mouse
           data-ratio="7" // wtf is this?
-          data-max="20" // maximum movement from original position
+          data-max="70" // maximum movement from original position
           data-scale="1" // if you want to scale the element
           data-ease="0.225"
         >
@@ -251,11 +296,20 @@ const Main = () => {
         <span ref={intro}>
           I am{' '}
           <b
-            onMouseEnter={() => changeTheme(colorObj.pink)}
-            onMouseLeave={() => resetTheme()}
+            ref={name}
+            onMouseEnter={() => handleMouseEnter()}
+            onMouseLeave={() => handleMouseLeave()}
+            onMouseMove={(e) => puddleMouseMove(e)}
+            className="name"
           >
             {' '}
             Jessica
+            <img
+              src="/images/jessica.png"
+              alt="profile"
+              loading="lazy"
+              ref={nameImage}
+            />
           </b>{' '}
           a{' '}
           <b
