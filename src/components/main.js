@@ -151,14 +151,14 @@ const Main = () => {
         background: '#FF8B8B',
       },
     },
-    blue: {
+    yellow: {
       light: {
-        foreground: '#10287F',
-        background: '#F9F8C1',
+        foreground: '#28292B',
+        background: '#EED974',
       },
       dark: {
-        foreground: '#F9F8C1',
-        background: '#10287F',
+        foreground: '#EED974',
+        background: '#061A23',
       },
     },
     red: {
@@ -259,7 +259,7 @@ const Main = () => {
           </b>{' '}
           a{' '}
           <b
-            onMouseEnter={() => changeTheme(colorObj.blue)}
+            onMouseEnter={() => changeTheme(colorObj.yellow)}
             onMouseLeave={() => resetTheme()}
           >
             frontend developer
