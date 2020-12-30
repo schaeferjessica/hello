@@ -51,25 +51,45 @@ const Main = () => {
   const intro = useRef(null);
   const { color, changeTheme, resetTheme } = useContext(ThemeContext);
   const colorObj = {
-    red: {
-      foreground: '#FFAAC3',
-      background: '#FFE7F3',
-    },
-    orange: {
-      foreground: '#FFBBAC',
-      background: '#F3FFDF',
+    pink: {
+      light: {
+        foreground: '#FF8B8B',
+        background: '#F9F8E6',
+      },
+      dark: {
+        foreground: '#F9F8E6',
+        background: '#FF8B8B',
+      },
     },
     blue: {
-      foreground: '#7E9DFF',
-      background: '#ECFFFC',
+      light: {
+        foreground: '#10287F',
+        background: '#F9F8C1',
+      },
+      dark: {
+        foreground: '#F9F8C1',
+        background: '#10287F',
+      },
     },
-    yellow: {
-      foreground: '#45E2F6',
-      background: '#FFFBCC',
+    red: {
+      light: {
+        foreground: '#EF3E4A',
+        background: '#F2F2F2',
+      },
+      dark: {
+        foreground: '#F2F2F2',
+        background: '#EF3E4A',
+      },
     },
     green: {
-      foreground: '#37C198',
-      background: '#F3FFDF',
+      light: {
+        foreground: '#62BFAD',
+        background: '#F9F7E8',
+      },
+      dark: {
+        foreground: '#F9F7E8',
+        background: '#121738',
+      },
     },
   };
 
@@ -95,18 +115,13 @@ const Main = () => {
   return (
     <MainContainer className="container">
       <H1 color={color.foreground}>
-        <b
-          ref={hallo}
-          className="hello"
-          onMouseEnter={() => changeTheme(colorObj.blue)}
-          onMouseLeave={() => resetTheme()}
-        >
+        <b ref={hallo} className="hello">
           Hello.
         </b>{' '}
         <span ref={intro}>
           I am{' '}
           <b
-            onMouseEnter={() => changeTheme(colorObj.orange)}
+            onMouseEnter={() => changeTheme(colorObj.pink)}
             onMouseLeave={() => resetTheme()}
           >
             {' '}
@@ -114,7 +129,7 @@ const Main = () => {
           </b>{' '}
           a{' '}
           <b
-            onMouseEnter={() => changeTheme(colorObj.yellow)}
+            onMouseEnter={() => changeTheme(colorObj.blue)}
             onMouseLeave={() => resetTheme()}
           >
             frontend developer

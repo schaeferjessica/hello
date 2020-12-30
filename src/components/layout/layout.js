@@ -35,15 +35,15 @@ const Layout = ({ children }) => {
   };
 
   // animate theme colors to spefic colors
-  const changeTheme = ({ foreground, background }) => {
+  const changeTheme = (color) => {
     setThemeColor({
       light: {
-        foreground,
-        background: '#fff',
+        foreground: color.light.foreground,
+        background: color.light.background,
       },
       dark: {
-        foreground,
-        background,
+        foreground: color.dark.foreground,
+        background: color.dark.background,
       },
     });
   };
