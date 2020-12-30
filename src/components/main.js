@@ -1,9 +1,10 @@
-import React, { useRef, useEffect, useContext, useState } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { devices } from '../styles/breakpoints';
 import ThemeContext from '../styles/themecontext';
 import anime from 'animejs/lib/anime.es.js';
 import { colorTransition } from '../styles/color';
+import { withPrefix } from 'gatsby';
 
 const MainContainer = styled.main`
   display: flex;
@@ -212,7 +213,7 @@ const Main = () => {
     // We have to clamp these values, because sometimes they return faulty values
     const clampedX = clamp(e.nativeEvent.offsetX, 0, nameRect.width * 2);
     const clampedY = clamp(e.nativeEvent.offsetY, 0, nameRect.height);
-    nameImage.current.style.transform = `translate3d(calc(-100% + ${clampedX}px), calc(-50% + ${clampedY}px), 0)`;
+    nameImage.current.style.transform = `translate3d(calc(-50% + ${clampedX}px), calc(-50% + ${clampedY}px), 0)`;
   };
   const puddleMouseLeave = () => {
     nameImage.current.classList.remove('is-active');
@@ -304,7 +305,7 @@ const Main = () => {
             {' '}
             Jessica
             <img
-              src="/images/jessica.png"
+              src={withPrefix('/images/jessica.png')}
               alt="profile"
               loading="lazy"
               ref={nameImage}
