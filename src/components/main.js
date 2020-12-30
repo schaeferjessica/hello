@@ -53,7 +53,6 @@ const H1 = styled.h1`
 
   .name {
     position: relative;
-    z-index: 1;
 
     img {
       position: absolute;
