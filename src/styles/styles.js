@@ -42,7 +42,7 @@ export default createGlobalStyle`
     }
 
     @media ${devices.mobile} { 
-      font-size: 16px;
+      font-size: 14px;
     }
   }
 `;

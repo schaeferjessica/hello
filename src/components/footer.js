@@ -12,17 +12,21 @@ const FooterEl = styled.footer`
   padding-left: 0;
   margin-top: 100px;
 
+  @media ${devices.mobile} {
+    margin-top: 50px;
+  }
+
   > p {
     white-space: nowrap;
     font-size: 16px;
-    padding-left: 20px;
+    padding-left: 30px;
     padding-bottom: 20px;
     font-weight: 500;
     color: ${(props) => props.color};
     ${colorTransition}
 
     @media ${devices.mobile} {
-      font-size: 14px;
+      padding-left: 20px;
     }
   }
 `;
