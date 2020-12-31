@@ -1,13 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import ThemeContext from '../styles/themecontext';
 import { devices } from '../styles/breakpoints';
 import { colorTransition } from '../styles/color';
+import anime from 'animejs/lib/anime.es.js';
 
 // styles
 const TableContainer = styled.div`
   width: 100%;
   margin-top: 100px;
+
+  @media ${devices.mobile} {
+    margin-top: 50px;
+  }
 `;
 const TableTitle = styled.h2`
   text-align: left;
@@ -26,6 +31,8 @@ const TableEl = styled.table`
     grid-template-rows: 1fr;
     border-top: 1px solid ${(props) => props.color};
     transition: border 0.6s ease-in-out;
+    padding-right: 30px;
+    padding-left: 30px;
 
     @media ${devices.mobile} {
       display: flex;
@@ -33,6 +40,8 @@ const TableEl = styled.table`
       align-items: flex-start;
       padding-top: 10px;
       padding-bottom: 10px;
+      padding-right: 20px;
+      padding-left: 20px;
     }
 
     &:last-child {
@@ -77,10 +86,24 @@ const TableEl = styled.table`
 `;
 
 const Table = ({ title, data }) => {
+  const table = useRef(null);
   const { color } = useContext(ThemeContext);
+
+  useEffect(() => {
+    anime.timeline().add({
+      targets: table.current,
+      translateY: [100, 0],
+      translateZ: 0,
+      opacity: [0, 1],
+      easing: 'easeOutExpo',
+      duration: 1400,
+      delay: 1500,
+    });
+  }, []);
+
   return (
-    <TableContainer color={color.foreground}>
-      <TableTitle>{title}</TableTitle>
+    <TableContainer color={color.foreground} ref={table}>
+      <TableTitle className="container">{title}</TableTitle>
       <TableEl color={color.foreground}>
         <thead>
           <tr>

@@ -23,7 +23,6 @@ const Nav = styled.nav`
   align-items: center;
 
   p {
-    font-weight: 500;
     color: ${(props) => props.color};
     ${colorTransition}
   }

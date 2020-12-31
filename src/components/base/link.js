@@ -6,7 +6,6 @@ import { devices } from '../../styles/breakpoints';
 
 export const StyledLink = styled.a`
   color: ${(props) => props.color.foreground};
-  font-weight: 500;
   text-decoration: none;
   padding: 5px;
   ${colorTransition}
