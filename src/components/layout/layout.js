@@ -11,7 +11,7 @@ import { devices } from '../../styles/breakpoints';
 const Cursor = styled.div`
   width: 53px;
   height: 54px;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 9;
@@ -56,10 +56,13 @@ const Layout = ({ children }) => {
 
   // let custom cursor follow mouse
   const bindMouseEvents = (cursor) => {
-    document.addEventListener('mousemove', (e) => {
+    const followMouse = (e) => {
       cursor.current.style.top = `${e.clientY}px`;
       cursor.current.style.left = `${e.clientX}px`;
-    });
+    };
+
+    document.addEventListener('mousemove', (e) => followMouse(e));
+    document.addEventListener('scroll', (e) => followMouse(e));
 
     const links = [...document.querySelectorAll('a')];
     if (links.length) {
