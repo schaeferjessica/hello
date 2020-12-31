@@ -19,13 +19,18 @@ const MainContainer = styled.main`
 `;
 const H1 = styled.h1`
   font-weight: 300;
-  font-size: 95px;
-  line-height: 125px;
+  font-size: 90px;
+  line-height: 120px;
   margin-top: 100px;
 
+  @media ${devices.tablet} {
+    font-size: 60px;
+    line-height: 80px;
+  }
+
   @media ${devices.mobile} {
-    font-size: 45px;
-    line-height: 70px;
+    font-size: 30px;
+    line-height: 50px;
     margin-top: 50px;
   }
 
