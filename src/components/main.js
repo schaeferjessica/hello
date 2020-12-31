@@ -37,7 +37,7 @@ const H1 = styled.h1`
       transform-origin: 50% 100%;
       opacity: 1;
       transform: scale(0);
-      color: ${(props) => props.color};
+      color: ${(props) => props.color.foreground};
       ${colorTransition}
     }
   }
@@ -48,11 +48,11 @@ const H1 = styled.h1`
   }
 
   a {
-    color: ${(props) => props.color};
+    color: ${(props) => props.color.foreground};
     ${colorTransition}
 
     &:focus-visible {
-      outline: 1px solid ${(props) => props.color};
+      outline: 1px solid ${(props) => props.color.foreground};
     }
   }
 
@@ -71,6 +71,31 @@ const H1 = styled.h1`
       &.is-active {
         opacity: 1;
       }
+    }
+  }
+
+  .text-background {
+    color: ${(props) => props.color.foreground};
+    text-decoration: none;
+    background-image: linear-gradient(
+      180deg,
+      black,
+      ${(props) => props.color.foreground} 0
+    );
+    background-repeat: no-repeat;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    transition: background-size 0.4s ease;
+    padding: 0.2em 0.2em 0;
+    margin-left: -0.2em;
+    background-position: 0 0.26em;
+    background-size: 100% 1.16em;
+    background-position: -18em 0.26em;
+    transition: all 0.8s ease-in-out;
+
+    &:hover {
+      color: ${(props) => props.color.background};
+      background-position: 0 0.26em;
     }
   }
 `;
@@ -285,7 +310,7 @@ const Main = () => {
 
   return (
     <MainContainer className="container">
-      <H1 color={color.foreground}>
+      <H1 color={color}>
         <b
           className="hello"
           ref={hallo}
@@ -317,6 +342,7 @@ const Main = () => {
           </b>{' '}
           a{' '}
           <b
+            className="text-background"
             onMouseEnter={() => changeTheme(colorObj.yellow)}
             onMouseLeave={() => resetTheme()}
           >
