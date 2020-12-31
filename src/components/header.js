@@ -108,6 +108,10 @@ const NavMode = styled.button`
   transform: scaleX(1) scaleY(1) translateX(0px) translateY(0px) rotate(0deg);
   animation: ${rotate} 5s ease-in-out infinite;
 
+  &:focus-visible {
+    outline: 1px solid ${(props) => props.color};
+  }
+
   @media ${devices.mobile} {
     transform: scaleX(0.7) scaleY(0.7) translateX(0px) translateY(0px)
       rotate(0deg);
@@ -135,10 +139,17 @@ const spotify = keyframes`
 const NavSpotify = styled.a`
   display: flex;
   align-items: flex-end;
-  height: 20px;
+  height: 30px;
   margin-left: 40px;
+  padding: 5px;
+
+  &:focus-visible {
+    outline: 1px solid ${(props) => props.color};
+  }
 
   @media ${devices.mobile} {
+    padding: 0;
+    height: 20px;
     display: none;
   }
 
@@ -177,7 +188,7 @@ const Header = () => {
 
   return (
     <NavHeader className="container" color={color.foreground}>
-      <NavMode onClick={toggleTheme}>
+      <NavMode onClick={toggleTheme} color={color.foreground}>
         <span className="sr-only">toggle dark mode</span>
         <svg
           width="51"

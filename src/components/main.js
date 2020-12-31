@@ -50,6 +50,10 @@ const H1 = styled.h1`
   a {
     color: ${(props) => props.color};
     ${colorTransition}
+
+    &:focus-visible {
+      outline: 1px solid ${(props) => props.color};
+    }
   }
 
   .name {

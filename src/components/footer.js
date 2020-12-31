@@ -65,7 +65,7 @@ const TickerWrapper = styled.div`
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 30px;
+  height: 50px;
 
   &:hover ul {
     animation-play-state: paused;
@@ -73,12 +73,12 @@ const TickerWrapper = styled.div`
 `;
 
 const ticker = keyframes`
-  0% { transform: translate(0%, 0); }
-  100% {transform: translate(-100%, 0); }
+  0% { transform: translate(0%, -50%); }
+  100% {transform: translate(-100%, -50%); }
 `;
 const tickerShadow = keyframes`
-  0% { transform: translate(100%, 0); }
-  100% {transform: translate(0%, 0); }
+  0% { transform: translate(100%, -50%); }
+  100% {transform: translate(0%, -50%); }
 `;
 const animationDuration = 20;
 const NavUl = styled.ul`
@@ -88,12 +88,12 @@ const NavUl = styled.ul`
   margin: 0;
   white-space: nowrap;
   position: absolute;
-  top: 0;
-  transform: translate(0%, 0);
+  top: 50%;
+  transform: translate(0%, -50%);
   animation: ${ticker} ${animationDuration}s linear infinite;
 `;
 const NavUlShadow = styled(NavUl)`
-  transform: translate(100%, 0);
+  transform: translate(100%, -50%);
   animation: ${tickerShadow} ${animationDuration}s linear infinite;
 `;
 const NavLi = styled.li`
@@ -113,6 +113,15 @@ const NavLi = styled.li`
 
   a {
     white-space: nowrap;
+    padding: 5px;
+
+    @media ${devices.mobile} {
+      padding: 0;
+    }
+
+    &:focus-visible {
+      outline: 1px solid ${(props) => props.color};
+    }
   }
 `;
 
