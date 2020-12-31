@@ -3,6 +3,7 @@ import Link from './base/link';
 import styled, { keyframes } from 'styled-components';
 import ThemeContext from '../styles/themecontext';
 import { devices } from '../styles/breakpoints';
+import { moduleSpace } from '../styles/container';
 import { colorTransition } from '../styles/color';
 import { footerLinks } from '../../static/data/data';
 
@@ -10,11 +11,7 @@ import { footerLinks } from '../../static/data/data';
 const FooterEl = styled.footer`
   padding-right: 0;
   padding-left: 0;
-  margin-top: 100px;
-
-  @media ${devices.mobile} {
-    margin-top: 50px;
-  }
+  ${moduleSpace}
 
   > p {
     white-space: nowrap;
@@ -82,7 +79,7 @@ const NavLi = styled.li`
   &::before {
     content: '';
     width: 10px;
-    height: 4px;
+    height: 3px;
     background-color: ${(props) => props.color};
     display: block;
     margin-right: 20px;

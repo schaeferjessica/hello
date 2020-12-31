@@ -15,3 +15,11 @@ export default createGlobalStyle`
     }
   }
 `;
+
+export const moduleSpace = `
+  margin-top: 80px;
+
+  @media ${devices.mobile} {
+    margin-top: 40px;
+  }
+`;

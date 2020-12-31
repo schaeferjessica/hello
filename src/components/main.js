@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useContext, useState } from 'react';
 import styled from 'styled-components';
 import { devices } from '../styles/breakpoints';
+import { moduleSpace } from '../styles/container';
 import ThemeContext from '../styles/themecontext';
 import anime from 'animejs/lib/anime.es.js';
 import { colorTransition } from '../styles/color';
@@ -14,14 +15,12 @@ const MainContainer = styled.main`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  ${moduleSpace}
 `;
 const H1 = styled.h1`
-  font-weight: 300;
+  font-weight: 400;
   font-size: 90px;
   line-height: 120px;
-  margin-top: 100px;
 
   @media ${devices.tablet} {
     font-size: 60px;
@@ -31,7 +30,6 @@ const H1 = styled.h1`
   @media ${devices.mobile} {
     font-size: 30px;
     line-height: 50px;
-    margin-top: 50px;
   }
 
   b {

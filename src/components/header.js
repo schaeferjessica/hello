@@ -56,7 +56,7 @@ const NavLi = styled.li`
   &::before {
     content: '';
     width: 10px;
-    height: 4px;
+    height: 3px;
     background-color: ${(props) => props.color};
     display: block;
     margin-right: 20px;

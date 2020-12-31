@@ -2,17 +2,14 @@ import React, { useContext, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import ThemeContext from '../styles/themecontext';
 import { devices } from '../styles/breakpoints';
+import { moduleSpace } from '../styles/container';
 import { colorTransition } from '../styles/color';
 import anime from 'animejs/lib/anime.es.js';
 
 // styles
 const TableContainer = styled.div`
   width: 100%;
-  margin-top: 100px;
-
-  @media ${devices.mobile} {
-    margin-top: 50px;
-  }
+  ${moduleSpace}
 `;
 const TableTitle = styled.h2`
   text-align: left;
