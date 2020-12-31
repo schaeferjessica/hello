@@ -32,8 +32,8 @@ const Nav = styled.nav`
   position: relative;
   border-top: 1px solid ${(props) => props.color};
   transition: border 0.6s ease-in-out;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 `;
 const TickerWrapper = styled.div`
   position: relative;
@@ -104,7 +104,7 @@ const Footer = () => {
 
   return (
     <FooterEl className="container" color={color.foreground}>
-      <p>projects I worked on:</p>
+      <p>Projects:</p>
       <Nav color={color.foreground}>
         <TickerWrapper>
           <NavUl>

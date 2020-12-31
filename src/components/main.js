@@ -242,6 +242,7 @@ const Main = () => {
               href="https://3pc.de/agentur/team/"
               target="_blank"
               rel="noopener noreferrer"
+              data-linktype="extern"
             >
               3pc
             </a>
