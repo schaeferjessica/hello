@@ -1,10 +1,11 @@
-import React, { useRef, useEffect, useContext } from 'react';
+import React, { useRef, useEffect, useContext, useState } from 'react';
 import styled from 'styled-components';
 import { devices } from '../styles/breakpoints';
 import ThemeContext from '../styles/themecontext';
 import anime from 'animejs/lib/anime.es.js';
 import { colorTransition } from '../styles/color';
 import { withPrefix } from 'gatsby';
+import Scrambler from 'scrambling-letters';
 
 const MainContainer = styled.main`
   display: flex;
@@ -182,11 +183,14 @@ const resize = () => {
   });
 };
 
+const myLocations = ['Berlin', 'London', 'Auckland'];
+
 const Main = () => {
   const hallo = useRef(null);
   const intro = useRef(null);
   const name = useRef(null);
   const nameImage = useRef(null);
+  const [count, setCount] = useState(0);
   const { color, changeTheme, resetTheme } = useContext(ThemeContext);
   const colorObj = {
     pink: {
@@ -219,14 +223,14 @@ const Main = () => {
         background: '#EF3E4A',
       },
     },
-    green: {
+    gray: {
       light: {
-        foreground: '#62BFAD',
-        background: '#F9F7E8',
+        foreground: '#141414',
+        background: '#F4F1EC',
       },
       dark: {
-        foreground: '#F9F7E8',
-        background: '#121738',
+        foreground: '#F4F1EC',
+        background: '#141414',
       },
     },
   };
@@ -248,13 +252,39 @@ const Main = () => {
     nameImage.current.classList.remove('is-active');
     name.current.classList.remove('is-active');
   };
-  const handleMouseEnter = () => {
+  const handleNameMouseEnter = () => {
     changeTheme(colorObj.pink);
     puddleMouseEnter();
   };
-  const handleMouseLeave = () => {
+  const handleNameMouseLeave = () => {
     resetTheme();
     puddleMouseLeave();
+  };
+
+  const scramble = (word, callBack) => {
+    Scrambler({
+      target: '#location',
+      random: [1000, 2000],
+      speed: 100,
+      text: word,
+      afterAll: callBack,
+    });
+  };
+
+  // location text animation
+  const handleLocationMouseEnter = () => {
+    changeTheme(colorObj.gray);
+
+    // animate "berlin"
+    scramble(myLocations[count], () => {
+      let actualCount = count;
+      const newCount = count === myLocations.length - 1 ? 0 : actualCount + 1;
+      setCount(newCount);
+    });
+  };
+  const handleLocationMouseLeave = () => {
+    resetTheme();
+    scramble('Berlin');
   };
 
   useEffect(() => {
@@ -326,8 +356,8 @@ const Main = () => {
           I am{' '}
           <b
             ref={name}
-            onMouseEnter={() => handleMouseEnter()}
-            onMouseLeave={() => handleMouseLeave()}
+            onMouseEnter={() => handleNameMouseEnter()}
+            onMouseLeave={() => handleNameMouseLeave()}
             onMouseMove={(e) => puddleMouseMove(e)}
             className="name"
           >
@@ -363,8 +393,9 @@ const Main = () => {
           </b>{' '}
           from{' '}
           <b
-            onMouseEnter={() => changeTheme(colorObj.green)}
-            onMouseLeave={() => resetTheme()}
+            id="location"
+            onMouseEnter={() => handleLocationMouseEnter()}
+            onMouseLeave={() => handleLocationMouseLeave()}
           >
             Berlin
           </b>
