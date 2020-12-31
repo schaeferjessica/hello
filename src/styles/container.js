@@ -17,9 +17,9 @@ export default createGlobalStyle`
 `;
 
 export const moduleSpace = `
-  margin-top: 80px;
+  margin-top: 100px;
 
   @media ${devices.mobile} {
-    margin-top: 40px;
+    margin-top: 50px;
   }
 `;

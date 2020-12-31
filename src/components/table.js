@@ -72,6 +72,8 @@ const TableEl = styled.table`
     text-align: left;
     padding-top: 10px;
     padding-bottom: 10px;
+    display: flex;
+    align-items: center;
     ${colorTransition}
 
     @media ${devices.mobile} {
