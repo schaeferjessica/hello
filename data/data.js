@@ -45,17 +45,20 @@ export const footerLinks = [
 export const educations = [
   {
     time: '2019',
-    description: 'Web Development, Coding Bootcamp',
+    description:
+      '<a href="https://www.lewagon.com/de/web-development-course/full-time" target="_blank" rel="noopener noreferrer" data-linktype="extern">Web Development, Coding Bootcamp</a>',
     location: 'Berlin, DE',
   },
   {
     time: '2012-2015',
-    description: 'BA (Hons), Fashion Promotion & Marketing',
+    description:
+      '<a href="https://www.southwales.ac.uk/courses/ba-hons-fashion-promotion/" target="_blank" rel="noopener noreferrer" data-linktype="extern">BA (Hons), Fashion Promotion & Marketing</a>',
     location: 'Cardiff, UK',
   },
   {
     time: '2010-2012',
-    description: 'BTEC Extended Diploma, Art & Design',
+    description:
+      '<a href="https://www.gbmc.ac.uk/ual-level-3-diploma-digital-media-arts-northbrook-met" target="_blank" rel="noopener noreferrer" data-linktype="extern">BTEC Extended Diploma, Art & Design</a>',
     location: 'Brighton, UK',
   },
 ];
@@ -64,12 +67,14 @@ export const educations = [
 export const experiences = [
   {
     time: '2019-2021',
-    description: 'Junior Frontend Developer, 3pc GmbH Neue Kommunikation',
+    description:
+      '<a href="https://3pc.de/" target="_blank" rel="noopener noreferrer" data-linktype="extern">Frontend Developer, 3pc GmbH Neue Kommunikation</a>',
     location: 'Berlin, DE',
   },
   {
     time: '2019-2020',
-    description: 'Design Intern, Lolo Magazine',
+    description:
+      '<a href="https://lolamag.de/" target="_blank" rel="noopener noreferrer" data-linktype="extern">Design Intern, Lolo Magazine</a>',
     location: 'Berlin, DE',
   },
   {
