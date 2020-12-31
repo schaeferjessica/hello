@@ -6,6 +6,8 @@ import anime from 'animejs/lib/anime.es.js';
 import { colorTransition } from '../styles/color';
 import { withPrefix } from 'gatsby';
 import Scrambler from 'scrambling-letters';
+import Table from './table';
+import { myLocations, educations, experiences } from '../../static/data/data';
 
 const MainContainer = styled.main`
   display: flex;
@@ -182,8 +184,6 @@ const resize = () => {
     height: window.innerHeight,
   });
 };
-
-const myLocations = ['Berlin', 'London', 'Auckland'];
 
 const Main = () => {
   const hallo = useRef(null);
@@ -402,6 +402,10 @@ const Main = () => {
           .
         </span>
       </H1>
+      <div id="table-container" style={{ width: '100%' }}>
+        <Table title="Education:" data={educations} />
+        <Table title="Experiences:" data={experiences} />
+      </div>
     </MainContainer>
   );
 };

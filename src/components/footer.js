@@ -4,39 +4,13 @@ import styled, { keyframes } from 'styled-components';
 import ThemeContext from '../styles/themecontext';
 import { devices } from '../styles/breakpoints';
 import { colorTransition } from '../styles/color';
-
-// data
-const links = [
-  {
-    link: 'https://www.sammlung-goetz.de/',
-    linkText: 'Sammlung Goetz',
-  },
-  {
-    link: 'https://3landesmuseen-braunschweig.de/',
-    linkText: '3Landesmuseen',
-  },
-  {
-    link: 'https://www.drogenbeauftragte.de/',
-    linkText: 'Drogenbeauftragte',
-  },
-  {
-    link: 'https://match.charite.de/',
-    linkText: 'Charité - Match and Conect',
-  },
-  {
-    link: 'https://www.spark-bih.de/',
-    linkText: 'BIH - Spark',
-  },
-  {
-    link: 'https://www.dhm.de/',
-    linkText: 'Deutsches Historisches Museum',
-  },
-];
+import { footerLinks } from '../../static/data/data';
 
 // styles
 const FooterEl = styled.footer`
   padding-right: 0;
   padding-left: 0;
+  margin-top: 100px;
 
   > p {
     white-space: nowrap;
@@ -134,14 +108,14 @@ const Footer = () => {
       <Nav color={color.foreground}>
         <TickerWrapper>
           <NavUl>
-            {links.map((link) => (
+            {footerLinks.map((link) => (
               <NavLi key={link.link} color={color.foreground}>
                 <Link link={link.link} linkText={link.linkText} />
               </NavLi>
             ))}
           </NavUl>
           <NavUlShadow>
-            {links.map((link) => (
+            {footerLinks.map((link) => (
               <NavLi key={link.link} color={color.foreground}>
                 <Link link={link.link} linkText={link.linkText} />
               </NavLi>

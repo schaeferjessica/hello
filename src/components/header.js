@@ -4,22 +4,8 @@ import styled, { keyframes } from 'styled-components';
 import ThemeContext from '../styles/themecontext';
 import { devices } from '../styles/breakpoints';
 import { colorTransition } from '../styles/color';
-
-// data
-const links = [
-  {
-    link: 'https://resoume.com/dashboard',
-    linkText: 'resume',
-  },
-  {
-    link: 'https://www.linkedin.com/in/jessicaschafer/',
-    linkText: 'linkedin',
-  },
-  {
-    link: 'https://github.com/schaeferjessica',
-    linkText: 'github',
-  },
-];
+import { navLinks } from '../../static/data/data';
+import { StyledLink } from './base/link';
 
 // styles
 const NavHeader = styled.header`
@@ -186,6 +172,15 @@ const NavSpotify = styled.a`
 const Header = () => {
   const { color, toggleTheme } = useContext(ThemeContext);
 
+  const jumpTo = (e) => {
+    e.preventDefault();
+
+    window.scrollTo({
+      top: document.querySelector('#table-container').offsetTop,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <NavHeader className="container" color={color.foreground}>
       <NavMode onClick={toggleTheme} color={color.foreground}>
@@ -207,7 +202,17 @@ const Header = () => {
         <p>contact me here:</p>
 
         <NavUl>
-          {links.map((link) => (
+          <NavLi color={color.foreground}>
+            <StyledLink
+              href="#table-container"
+              color={color}
+              onClick={(e) => jumpTo(e)}
+              data-linktype="intern"
+            >
+              resume
+            </StyledLink>
+          </NavLi>
+          {navLinks.map((link) => (
             <NavLi key={link.link} color={color.foreground}>
               <Link link={link.link} linkText={link.linkText} />
             </NavLi>

@@ -4,7 +4,7 @@ import ThemeContext from '../../styles/themecontext';
 import { colorTransition } from '../../styles/color';
 import { devices } from '../../styles/breakpoints';
 
-const StyledLink = styled.a`
+export const StyledLink = styled.a`
   color: ${(props) => props.color.foreground};
   font-weight: 500;
   text-decoration: none;
@@ -20,7 +20,7 @@ const StyledLink = styled.a`
   }
 `;
 
-const Link = ({ link, linkText }) => {
+const Link = ({ link, linkText, linkType = 'extern' }) => {
   const { color } = useContext(ThemeContext);
   return (
     <StyledLink
@@ -28,6 +28,7 @@ const Link = ({ link, linkText }) => {
       href={link}
       target="_blank"
       rel="noopener noreferrer"
+      data-linktype={linkType}
     >
       {linkText}
     </StyledLink>
