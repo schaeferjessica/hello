@@ -13,6 +13,7 @@ const TableTitle = styled.h2`
   text-align: left;
   font-size: 16px;
   margin-bottom: 20px;
+  font-weight: 500;
   color: ${(props) => props.color};
 `;
 const TableEl = styled.table`

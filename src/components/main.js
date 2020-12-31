@@ -21,6 +21,7 @@ const H1 = styled.h1`
   font-weight: 300;
   font-size: 95px;
   line-height: 125px;
+  margin-top: 100px;
 
   @media ${devices.mobile} {
     font-size: 45px;
