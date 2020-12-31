@@ -83,6 +83,22 @@ const TableEl = styled.table`
       padding-bottom: 0px;
     }
   }
+
+  a {
+    color: ${(props) => props.color};
+    text-decoration: none;
+    padding: 5px;
+    display: inline-block;
+    ${colorTransition}
+
+    @media ${devices.mobile} {
+      padding: 0;
+    }
+
+    &:focus-visible {
+      outline: 1px solid ${(props) => props.color};
+    }
+  }
 `;
 
 const Table = ({ title, data }) => {
@@ -116,7 +132,10 @@ const Table = ({ title, data }) => {
           {data.map((item) => (
             <tr key={item.time}>
               <td className="time">{item.time}</td>
-              <td className="description">{item.description}</td>
+              <td
+                className="description"
+                dangerouslySetInnerHTML={{ __html: item.description }}
+              />
               <td className="location">{item.location}</td>
             </tr>
           ))}

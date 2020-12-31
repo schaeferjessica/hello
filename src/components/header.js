@@ -198,7 +198,7 @@ const Header = () => {
         </svg>
       </NavMode>
       <Nav color={color.foreground}>
-        <p>contact me here:</p>
+        <p>Contact:</p>
 
         <NavUl>
           <NavLi color={color.foreground}>
@@ -223,6 +223,7 @@ const Header = () => {
           href="https://open.spotify.com/playlist/2k2VFAQUBw77Rv7niYMYIw?si=J7QrnQugTie05hf9S05JjQ"
           target="_blank"
           rel="noopener noreferrer"
+          data-linktype="extern"
         >
           <span className="line line-1" aria-hidden="true"></span>
           <span className="line line-2" aria-hidden="true"></span>
