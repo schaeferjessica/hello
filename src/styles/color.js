@@ -5,7 +5,7 @@ export const colors = {
   },
   dark: {
     foreground: '#FCF8ED',
-    background: '#10287F',
+    background: '#111C31',
   },
 };
 

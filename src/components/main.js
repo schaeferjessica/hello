@@ -123,15 +123,17 @@ const Main = () => {
     },
     red: {
       light: {
-        foreground: '#EF3E4A',
+        foreground: '#FF5255',
         background: '#F2F2F2',
+        backgroundImage:
+          'linear-gradient(to bottom right,rgba(233,255,232,1) 10%,rgba(255,187,188,1) 80%);',
       },
       dark: {
         foreground: '#F2F2F2',
-        background: '#EF3E4A',
+        background: '#FF5255',
       },
     },
-    gradient: {
+    orange: {
       light: {
         foreground: '#141414',
         background: '#F4F1EC',
@@ -185,7 +187,7 @@ const Main = () => {
 
   // location text animation
   const handleLocationMouseEnter = () => {
-    changeTheme(colorObj.gradient);
+    changeTheme(colorObj.orange);
 
     // animate "berlin"
     scramble(myLocations[count], () => {
