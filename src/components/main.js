@@ -107,10 +107,10 @@ const Main = () => {
         background: '#F9F8E6',
       },
       dark: {
-        foreground: '#F9F8E6',
-        background: '#FF8B8B',
+        foreground: '#FFF6E2',
+        background: '#2B2B2B',
         backgroundImage:
-          'linear-gradient(to bottom right,rgba(215,210,203,1) 10%,rgba(255,139,139,1) 80%);',
+          'linear-gradient(to bottom right,rgba(43,43,43,1) 20%,rgba(20,20,20,1) 80%);',
       },
     },
     yellow: {
