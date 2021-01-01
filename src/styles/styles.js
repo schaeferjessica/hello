@@ -35,6 +35,7 @@ export default createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     color: ${(props) => props.color.foreground};
     background-color: ${(props) => props.color.background};
+    background-image: ${(props) => props.color.backgroundImage};
     ${colorTransition}
 
     @media ${devices.tablet} { 

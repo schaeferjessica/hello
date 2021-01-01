@@ -40,10 +40,12 @@ const Layout = ({ children }) => {
       light: {
         foreground: color.light.foreground,
         background: color.light.background,
+        backgroundImage: color.light.backgroundImage,
       },
       dark: {
         foreground: color.dark.foreground,
         background: color.dark.background,
+        backgroundImage: color.dark.backgroundImage,
       },
     });
   };

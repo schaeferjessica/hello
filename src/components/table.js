@@ -77,7 +77,6 @@ const TableEl = styled.table`
     ${colorTransition}
 
     @media ${devices.mobile} {
-      font-size: 14px;
       padding-top: 0px;
       padding-bottom: 0px;
     }

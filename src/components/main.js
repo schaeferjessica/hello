@@ -28,7 +28,7 @@ const H1 = styled.h1`
   }
 
   @media ${devices.mobile} {
-    font-size: 30px;
+    font-size: 40px;
     line-height: 50px;
   }
 
@@ -131,14 +131,18 @@ const Main = () => {
         background: '#EF3E4A',
       },
     },
-    gray: {
+    gradient: {
       light: {
         foreground: '#141414',
         background: '#F4F1EC',
+        backgroundImage:
+          'linear-gradient(to bottom right,rgba(201,210,240,1) 10%,rgba(255,231,191,1) 80%);',
       },
       dark: {
-        foreground: '#F4F1EC',
-        background: '#141414',
+        foreground: '#141414',
+        background: '#F4F1EC',
+        backgroundImage:
+          'linear-gradient(to bottom right,rgba(201,210,240,1) 10%,rgba(255,231,191,1) 80%);',
       },
     },
   };
@@ -181,7 +185,7 @@ const Main = () => {
 
   // location text animation
   const handleLocationMouseEnter = () => {
-    changeTheme(colorObj.gray);
+    changeTheme(colorObj.gradient);
 
     // animate "berlin"
     scramble(myLocations[count], () => {
