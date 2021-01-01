@@ -20,16 +20,16 @@ const MainContainer = styled.main`
 const H1 = styled.h1`
   font-weight: 400;
   font-size: 90px;
-  line-height: 120px;
+  line-height: 110px;
 
   @media ${devices.tablet} {
-    font-size: 60px;
+    font-size: 70px;
     line-height: 80px;
   }
 
   @media ${devices.mobile} {
-    font-size: 40px;
-    line-height: 50px;
+    font-size: 50px;
+    line-height: 60px;
   }
 
   b {
@@ -109,6 +109,8 @@ const Main = () => {
       dark: {
         foreground: '#F9F8E6',
         background: '#FF8B8B',
+        backgroundImage:
+          'linear-gradient(to bottom right,rgba(215,210,203,1) 10%,rgba(255,139,139,1) 80%);',
       },
     },
     yellow: {

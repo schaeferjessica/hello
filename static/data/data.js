@@ -79,7 +79,7 @@ export const experiences = [
   },
   {
     time: '2016-2019',
-    description: 'Work and Travel, Australia / New Zealand',
+    description: '<span>Work and Travel, Australia / New Zealand</span>',
     location: 'AUS & NZ',
   },
 ];

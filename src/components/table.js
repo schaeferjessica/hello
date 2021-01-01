@@ -97,6 +97,10 @@ const TableEl = styled.table`
       outline: 1px solid ${(props) => props.color};
     }
   }
+
+  span {
+    padding: 5px;
+  }
 `;
 
 const Table = ({ title, data }) => {
