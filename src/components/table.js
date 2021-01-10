@@ -115,7 +115,7 @@ const Table = ({ title, data }) => {
       opacity: [0, 1],
       easing: 'easeOutExpo',
       duration: 1400,
-      delay: 1500,
+      delay: 500,
     });
   }, []);
 

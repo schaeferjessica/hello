@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/layout/layout';
 import Header from '../components/header';
 import Main from '../components/main';
-import Footer from '../components/footer';
+import Projects from '../components/projects';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -38,7 +38,7 @@ const IndexPage = () => {
       <Wrapper>
         <Header />
         <Main />
-        <Footer />
+        <Projects />
       </Wrapper>
     </Layout>
   );

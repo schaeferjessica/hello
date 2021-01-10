@@ -25,7 +25,7 @@ export const footerLinks = [
   },
   {
     link: 'https://www.drogenbeauftragte.de/',
-    linkText: 'Drogenbeauftragte',
+    linkText: 'Drogenbeauftragte der Bundesregierung',
   },
   {
     link: 'https://match.charite.de/',
@@ -38,6 +38,18 @@ export const footerLinks = [
   {
     link: 'https://www.dhm.de/',
     linkText: 'Deutsches Historisches Museum',
+  },
+  {
+    link: 'https://www.infravelo.de/',
+    linkText: 'infraVelo',
+  },
+  {
+    link: 'https://securityconference.org/',
+    linkText: 'Münchner Sicherheitskonferenz',
+  },
+  {
+    link: 'https://www.cats-network.eu/index.php',
+    linkText: 'CATS NETWORK',
   },
 ];
 

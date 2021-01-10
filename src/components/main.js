@@ -211,7 +211,7 @@ const Main = () => {
       opacity: [0, 1],
       easing: 'easeOutExpo',
       duration: 1400,
-      delay: 1000,
+      delay: 200,
     });
   }, []);
 
@@ -270,8 +270,8 @@ const Main = () => {
         </span>
       </H1>
       <div id="table-container" style={{ width: '100%' }}>
-        <Table title="Education:" data={educations} />
-        <Table title="Experiences:" data={experiences} />
+        <Table title="Education completed:" data={educations} />
+        <Table title="Experiences gained:" data={experiences} />
       </div>
     </MainContainer>
   );
