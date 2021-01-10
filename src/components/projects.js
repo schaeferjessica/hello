@@ -41,6 +41,11 @@ const Li = styled.li`
   border-top: 1px solid #10287F;
   transition: border 0.6s ease-in-out;
 
+  @media ${devices.mobile} {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
   a {
     padding: 5px;
     display: inline-block;

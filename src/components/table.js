@@ -100,6 +100,10 @@ const TableEl = styled.table`
 
   span {
     padding: 5px;
+
+    @media ${devices.mobile} {
+      padding: 0;
+    }
   }
 `;
 
