@@ -38,7 +38,7 @@ const Li = styled.li`
   padding-top: 10px;
   padding-right: 30px;
   padding-left: 30px;
-  border-top: 1px solid #10287F;
+  border-top: 1px solid ${(props) => props.color};;
   transition: border 0.6s ease-in-out;
 
   @media ${devices.mobile} {
