@@ -80,7 +80,7 @@ export const experiences = [
   {
     time: '2019-2021',
     description:
-      '<a href="https://3pc.de/" target="_blank" rel="noopener noreferrer" data-linktype="extern">Frontend Developer, 3pc GmbH Neue Kommunikation</a>',
+      '<a href="https://3pc.de/" target="_blank" rel="noopener noreferrer" data-linktype="extern">UX-/UI-Entwicklung, 3pc GmbH Neue Kommunikation</a>',
     location: 'Berlin, DE',
   },
   {
