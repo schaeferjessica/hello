@@ -1,12 +1,7 @@
 export const colors = {
-  light: {
-    foreground: '#10287F',
-    background: '#FFF6E2',
-  },
-  dark: {
-    foreground: '#FFF6E2',
-    background: '#111C31',
-  },
+  foreground: '#0C3C87',
+  background: '#FCF8ED',
+  backgroundImage: '',
 };
 
 export const colorTransition =

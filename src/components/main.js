@@ -5,10 +5,8 @@ import { moduleSpace } from '../styles/container';
 import ThemeContext from '../styles/themecontext';
 import anime from 'animejs/lib/anime.es.js';
 import { colorTransition } from '../styles/color';
-import { withPrefix } from 'gatsby';
-import Scrambler from 'scrambling-letters';
 import Table from './table';
-import { myLocations, educations, experiences } from '../../static/data/data';
+import { educations, experiences } from '../../static/data/data';
 
 const MainContainer = styled.main`
   display: flex;
@@ -19,17 +17,17 @@ const MainContainer = styled.main`
 `;
 const H1 = styled.h1`
   font-weight: 400;
-  font-size: 90px;
-  line-height: 110px;
+  font-size: 65px;
+  line-height: 100px;
 
   @media ${devices.tablet} {
-    font-size: 70px;
-    line-height: 80px;
+    font-size: 55px;
+    line-height: 90px;
   }
 
   @media ${devices.mobile} {
-    font-size: 50px;
-    line-height: 60px;
+    font-size: 35px;
+    line-height: 55px;
   }
 
   b {
@@ -47,24 +45,6 @@ const H1 = styled.h1`
 
     &:focus-visible {
       outline: 1px solid ${(props) => props.color.foreground};
-    }
-  }
-
-  .name {
-    position: relative;
-
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      width: 400px;
-      opacity: 0;
-      pointer-events: none;
-
-      &.is-active {
-        opacity: 1;
-      }
     }
   }
 
@@ -96,111 +76,18 @@ const H1 = styled.h1`
 
 const Main = () => {
   const intro = useRef(null);
-  const name = useRef(null);
-  const nameImage = useRef(null);
-  const [count, setCount] = useState(0);
-  const { color, changeTheme, resetTheme } = useContext(ThemeContext);
+  const { color, changeTheme } = useContext(ThemeContext);
   const colorObj = {
-    pink: {
-      light: {
-        foreground: '#FF8B8B',
-        background: '#F9F8E6',
-      },
-      dark: {
-        foreground: '#FFF6E2',
-        background: '#2B2B2B',
-        backgroundImage:
-          'linear-gradient(to bottom right,rgba(43,43,43,1) 20%,rgba(20,20,20,1) 80%);',
-      },
+    blue: {
+      foreground: '#141414',
+      background: '#FAEACF',
+      backgroundImage: 'linear-gradient(180deg, #D3DAF2 0%, #FEEBCB 100%)',
     },
-    yellow: {
-      light: {
-        foreground: '#28292B',
-        background: '#EED974',
-      },
-      dark: {
-        foreground: '#EED974',
-        background: '#061A23',
-      },
+    dark: {
+      foreground: '#FFF6E2',
+      background: '#111C31',
+      backgroundImage: '',
     },
-    red: {
-      light: {
-        foreground: '#FF5255',
-        background: '#F2F2F2',
-        backgroundImage:
-          'linear-gradient(to bottom right,rgba(233,255,232,1) 10%,rgba(255,187,188,1) 80%);',
-      },
-      dark: {
-        foreground: '#F2F2F2',
-        background: '#FF5255',
-      },
-    },
-    orange: {
-      light: {
-        foreground: '#141414',
-        background: '#F4F1EC',
-        backgroundImage:
-          'linear-gradient(to bottom right,rgba(201,210,240,1) 10%,rgba(255,231,191,1) 80%);',
-      },
-      dark: {
-        foreground: '#141414',
-        background: '#F4F1EC',
-        backgroundImage:
-          'linear-gradient(to bottom right,rgba(201,210,240,1) 10%,rgba(255,231,191,1) 80%);',
-      },
-    },
-  };
-
-  // image hover
-  const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
-  const puddleMouseEnter = () => {
-    nameImage.current.classList.add('is-active');
-    name.current.classList.add('is-active');
-  };
-  const puddleMouseMove = (e) => {
-    const nameRect = name.current.getBoundingClientRect();
-    // We have to clamp these values, because sometimes they return faulty values
-    const clampedX = clamp(e.nativeEvent.offsetX, 0, nameRect.width * 2);
-    const clampedY = clamp(e.nativeEvent.offsetY, 0, nameRect.height);
-    nameImage.current.style.transform = `translate3d(calc(-50% + ${clampedX}px), calc(-50% + ${clampedY}px), 0)`;
-  };
-  const puddleMouseLeave = () => {
-    nameImage.current.classList.remove('is-active');
-    name.current.classList.remove('is-active');
-  };
-  const handleNameMouseEnter = () => {
-    changeTheme(colorObj.pink);
-    puddleMouseEnter();
-  };
-  const handleNameMouseLeave = () => {
-    resetTheme();
-    puddleMouseLeave();
-  };
-
-  const scramble = (word, callBack) => {
-    Scrambler({
-      target: '#location',
-      random: [1000, 2000],
-      speed: 100,
-      text: word,
-      afterAll: callBack,
-    });
-  };
-
-  // location text animation
-  const handleLocationMouseEnter = () => {
-    changeTheme(colorObj.orange);
-
-    // animate "berlin"
-    scramble(myLocations[count], () => {
-      let actualCount = count;
-      const newCount = count === myLocations.length - 1 ? 0 : actualCount + 1;
-      setCount(newCount);
-    });
-  };
-  const handleLocationMouseLeave = () => {
-    resetTheme();
-    scramble('Berlin');
   };
 
   useEffect(() => {
@@ -221,34 +108,20 @@ const Main = () => {
         <span ref={intro}>
           Hello. I am{' '}
           <b
-            ref={name}
-            onMouseEnter={() => handleNameMouseEnter()}
-            onMouseLeave={() => handleNameMouseLeave()}
-            onMouseMove={(e) => puddleMouseMove(e)}
+            onMouseEnter={() => changeTheme(colorObj.blue)}
             className="name"
           >
             {' '}
             Jessica
-            <img
-              src={withPrefix('/images/jessica.png')}
-              alt="profile"
-              loading="lazy"
-              ref={nameImage}
-            />
           </b>{' '}
           a{' '}
           <b
             className="text-background"
-            onMouseEnter={() => changeTheme(colorObj.yellow)}
-            onMouseLeave={() => resetTheme()}
+            onMouseEnter={() => changeTheme(colorObj.dark)}
           >
             frontend developer
           </b>{' '}
           at{' '}
-          <b
-            onMouseEnter={() => changeTheme(colorObj.red)}
-            onMouseLeave={() => resetTheme()}
-          >
             <a
               href="https://3pc.de/agentur/team/"
               target="_blank"
@@ -256,17 +129,7 @@ const Main = () => {
               data-linktype="extern"
             >
               3pc
-            </a>
-          </b>{' '}
-          from{' '}
-          <b
-            id="location"
-            onMouseEnter={() => handleLocationMouseEnter()}
-            onMouseLeave={() => handleLocationMouseLeave()}
-          >
-            Berlin
-          </b>
-          .
+            </a> from Berlin.
         </span>
       </H1>
       <div id="table-container" style={{ width: '100%' }}>
