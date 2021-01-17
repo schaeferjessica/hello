@@ -1,15 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import Link from './base/link';
 import styled from 'styled-components';
 import ThemeContext from '../styles/themecontext';
 import { devices } from '../styles/breakpoints';
 import { colorTransition } from '../styles/color';
 import { navLinks } from '../../static/data/data';
+import anime from 'animejs/lib/anime.es.js';
 
 // styles
 const NavHeader = styled.header`
   padding-right: 0;
   padding-left: 0;
+  opacity: 0;
 `;
 const Nav = styled.nav`
   p {
@@ -51,9 +53,22 @@ const NavLi = styled.li`
 
 const Header = () => {
   const { color } = useContext(ThemeContext);
+  const header = useRef(null);
+
+  useEffect(() => {
+    anime.timeline().add({
+      targets: header.current,
+      translateY: [100, 0],
+      translateZ: 0,
+      opacity: [0, 1],
+      easing: 'easeOutExpo',
+      duration: 1400,
+      delay: 200,
+    });
+  }, []);
 
   return (
-    <NavHeader className="container" color={color.foreground}>
+    <NavHeader className="container" color={color.foreground} ref={header}>
       <Nav color={color.foreground}>
         <p>Contact me here:</p>
 
