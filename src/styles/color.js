@@ -1,7 +1,7 @@
 export const colors = {
-  foreground: '#0C3C87',
-  background: '#FCF8ED',
-  backgroundImage: '',
+  foreground: '#141414',
+  background: '#FAEACF',
+  backgroundImage: 'linear-gradient(180deg, #D3DAF2 0%, #FEEBCB 100%)',
 };
 
 export const colorTransition =

@@ -79,9 +79,9 @@ const Main = () => {
   const { color, changeTheme } = useContext(ThemeContext);
   const colorObj = {
     blue: {
-      foreground: '#141414',
-      background: '#FAEACF',
-      backgroundImage: 'linear-gradient(180deg, #D3DAF2 0%, #FEEBCB 100%)',
+      foreground: '#0C3C87',
+      background: '#FCF8ED',
+      backgroundImage: '',
     },
     dark: {
       foreground: '#FFF6E2',
