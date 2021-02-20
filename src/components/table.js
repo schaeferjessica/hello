@@ -5,6 +5,7 @@ import { devices } from '../styles/breakpoints';
 import { moduleSpace } from '../styles/container';
 import { colorTransition } from '../styles/color';
 import anime from 'animejs/lib/anime.es.js';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 // styles
 const TableContainer = styled.div`
@@ -13,10 +14,12 @@ const TableContainer = styled.div`
 `;
 const TableTitle = styled.h2`
   text-align: left;
-  font-size: 16px;
-  margin-bottom: 20px;
-  font-weight: 500;
+  margin-bottom: 80px;
   color: ${(props) => props.color};
+
+  @media ${devices.tablet} {
+    margin-bottom: 40px;
+  }
 `;
 const TableEl = styled.table`
   width: 100%;
@@ -26,8 +29,6 @@ const TableEl = styled.table`
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
     grid-template-rows: 1fr;
-    border-top: 1px solid ${(props) => props.color};
-    transition: border 0.6s ease-in-out;
     padding-right: 30px;
     padding-left: 30px;
 
@@ -41,7 +42,7 @@ const TableEl = styled.table`
       padding-left: 20px;
     }
 
-    &:last-child {
+    &:not(:last-child) {
       border-bottom: 1px solid ${(props) => props.color};
       transition: border 0.6s ease-in-out;
     }
@@ -107,7 +108,7 @@ const TableEl = styled.table`
   }
 `;
 
-const Table = ({ title, data }) => {
+const Table = ({ targetId, title, rows }) => {
   const table = useRef(null);
   const { color } = useContext(ThemeContext);
 
@@ -124,24 +125,30 @@ const Table = ({ title, data }) => {
   }, []);
 
   return (
-    <TableContainer color={color.foreground} ref={table}>
+    <TableContainer color={color.foreground} ref={table} id={targetId}>
       <TableTitle className="container">{title}</TableTitle>
       <TableEl color={color.foreground}>
         <thead>
           <tr>
-            <th className="sr-only">Time</th>
+            <th className="sr-only">Date</th>
             <th className="sr-only">Description</th>
             <th className="sr-only">Location</th>
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
-            <tr key={item.time}>
-              <td className="time">{item.time}</td>
-              <td
-                className="description"
-                dangerouslySetInnerHTML={{ __html: item.description }}
-              />
+          {rows.map((item, index) => (
+            <tr key={`${item.date}-${index}`}>
+              <td className="time">{item.date}</td>
+              <td className="description">
+                <a
+                  color={color.foreground}
+                  href={table.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {documentToReactComponents(JSON.parse(item.text.raw))}
+                </a>
+              </td>
               <td className="location">{item.location}</td>
             </tr>
           ))}

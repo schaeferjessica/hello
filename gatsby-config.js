@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   pathPrefix: `/hello`,
   siteMetadata: {
@@ -21,5 +23,15 @@ module.exports = {
         icon: `src/images/favicon.svg`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        spaceId: process.env.SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        downloadLocal: true,
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
   ],
 };

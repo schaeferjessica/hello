@@ -70,28 +70,40 @@ const Layout = ({ children }) => {
   }, []);
 
   return (
-    <ThemeContext.Provider
-      value={{ color, changeTheme, resetTheme }}
-    >
+    <ThemeContext.Provider value={{ color, changeTheme, resetTheme }}>
       <GlobalNormalizer />
       <GlobalStyles color={color} />
       <GlobalContainer />
       <ThemeContext.Consumer>
         {({ color }) => (
           <Cursor ref={cursorEl}>
-            {!cursorState ?
+            {!cursorState ? (
               <svg
-                width="20" height="20" viewBox="0 0 25 25"
+                width="20"
+                height="20"
+                viewBox="0 0 25 25"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <circle cx="12.5" cy="12.5" r="12.5" fill={color.foreground}/>
+                <circle cx="12.5" cy="12.5" r="12.5" fill={color.foreground} />
               </svg>
-            : 
-            <svg width="30" height="30" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="18.5" cy="18.5" r="17.5" stroke={color.foreground} stroke-width="2"/>
-            </svg>
-            }
+            ) : (
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 37 37"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="18.5"
+                  cy="18.5"
+                  r="17.5"
+                  stroke={color.foreground}
+                  strokeWidth="2"
+                />
+              </svg>
+            )}
           </Cursor>
         )}
       </ThemeContext.Consumer>

@@ -9,7 +9,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:jsx-a11y/recommended',
     'prettier',
-    'prettier/react'
+    'prettier/react',
   ],
   rules: {
     'prettier/prettier': [
@@ -30,11 +30,11 @@ module.exports = {
   env: {
     es6: true,
     browser: true,
-    node: true
+    node: true,
   },
   settings: {
     react: {
-      version: 'detect'
-    }
-  }
+      version: 'detect',
+    },
+  },
 };

@@ -5,8 +5,8 @@ export default createGlobalStyle`
   .container {
     max-width: 2000px;
     margin: 0 auto;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
     
 
     @media ${devices.mobile} {
@@ -17,7 +17,11 @@ export default createGlobalStyle`
 `;
 
 export const moduleSpace = `
-  margin-top: 100px;
+  margin-top: 160px;
+
+  @media ${devices.tablet} { 
+    margin-top: 80px;
+  }
 
   @media ${devices.mobile} {
     margin-top: 50px;

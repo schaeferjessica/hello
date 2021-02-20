@@ -1,66 +1,89 @@
 import React, { useContext, useEffect, useRef } from 'react';
-import Link from './base/link';
 import styled from 'styled-components';
 import ThemeContext from '../styles/themecontext';
-import { devices } from '../styles/breakpoints';
 import { moduleSpace } from '../styles/container';
-import { colorTransition } from '../styles/color';
-import { footerLinks } from '../../static/data/data';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import anime from 'animejs/lib/anime.es.js';
+import Img from 'gatsby-image';
+import { devices } from '../styles/breakpoints';
 
 // styles
-const ProjectsEl = styled.div`
-width: 100%;
-  padding-right: 0;
-  padding-left: 0;
+const ProjectsContainer = styled.div`
   ${moduleSpace}
 
   > h2 {
-    white-space: nowrap;
-    font-size: 16px;
-    padding-left: 30px;
-    padding-bottom: 20px;
-    font-weight: 500;
-    color: ${(props) => props.color};
-    ${colorTransition}
+    margin-bottom: 80px;
 
-    @media ${devices.mobile} {
-      padding-left: 20px;
+    @media ${devices.tablet} {
+      margin-bottom: 40px;
     }
   }
 `;
-const Ul = styled.ul`
+
+const ProjectList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   list-style: none;
-  margin-bottom: 20px;
+  margin: 0;
+  padding: 0;
+
+  h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
 `;
-const Li = styled.li`
-  padding-bottom: 10px;
-  padding-top: 10px;
-  padding-right: 30px;
-  padding-left: 30px;
-  border-top: 1px solid ${(props) => props.color};;
-  transition: border 0.6s ease-in-out;
+
+const TeaserLink = styled.a`
+  color: ${(props) => props.color};
+  text-decoration: none;
+`;
+
+const ProjectTeaser = styled.li`
+  width: 28%;
+  margin-bottom: 80px;
+
+  &:nth-child(3n - 1) {
+    margin-top: 40px;
+  }
+
+  @media ${devices.tablet} {
+    width: 47%;
+
+    &:nth-child(2n) {
+      margin-top: 20px;
+    }
+  }
 
   @media ${devices.mobile} {
-    padding-right: 20px;
-    padding-left: 20px;
-  }
+    width: 100%;
+    margin-bottom: 40px;
 
-  a {
-    padding: 5px;
-    display: inline-block;
-    
-    @media ${devices.mobile} {
-      padding: 0;
-    }
-
-    &:focus-visible {
-      outline: 1px solid ${(props) => props.color};
+    &:nth-child(3n - 1) {
+      margin-top: 0px;
     }
   }
 `;
 
-const Projects = () => {
+const ImgWrapper = styled.a`
+  width: 100%;
+  display: block;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    transform: scale(1);
+    transition: opacity 500ms ease 0s, transform 0.5s linear !important;
+    object-fit: contain;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+`;
+
+const Projects = ({ targetId, title, teasers }) => {
   const projectEl = useRef(null);
   const { color } = useContext(ThemeContext);
 
@@ -77,16 +100,40 @@ const Projects = () => {
   }, []);
 
   return (
-    <ProjectsEl className="container" color={color.foreground} ref={projectEl}>
-      <h2>Projects I worked on:</h2>
-      <Ul>
-          {footerLinks.map((link) => (
-            <Li key={link.link} color={color.foreground}>
-              <Link link={link.link} linkText={link.linkText} />
-            </Li>
-          ))}
-        </Ul>
-    </ProjectsEl>
+    <ProjectsContainer
+      className="container"
+      color={color.foreground}
+      ref={projectEl}
+      id={targetId}
+    >
+      <h2>{title}</h2>
+      <ProjectList>
+        {teasers.map((teaser, index) => (
+          <ProjectTeaser key={`teaser-${index}`} color={color.foreground}>
+            <ImgWrapper
+              href={teaser.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Img fluid={teaser.image.fluid} alt={teaser.image.title} />
+            </ImgWrapper>
+            <h3>
+              <TeaserLink
+                color={color.foreground}
+                href={teaser.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {teaser.title}
+              </TeaserLink>
+            </h3>
+            {teaser.text
+              ? documentToReactComponents(JSON.parse(teaser.text.raw))
+              : ''}
+          </ProjectTeaser>
+        ))}
+      </ProjectList>
+    </ProjectsContainer>
   );
 };
 
