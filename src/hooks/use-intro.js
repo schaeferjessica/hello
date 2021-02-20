@@ -8,7 +8,7 @@ export const useContentfulIntro = () => {
           raw
         }
         image {
-          fluid(maxWidth: 900, quality: 100) {
+          fluid(maxWidth: 1920, maxHeight: 800, quality: 100) {
             ...GatsbyContentfulFluid_withWebp
           }
           title

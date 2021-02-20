@@ -15,7 +15,6 @@ const IntroContainer = styled.section`
 
 const ImageWrapper = styled.div`
   width: 100%;
-  max-height: 700px;
 
   img {
     width: 100%;
@@ -45,6 +44,7 @@ const TextWrapper = styled.div`
   text-align: center;
 
   @media ${devices.tablet} {
+    width: 93%;
     padding: 20px;
   }
 
