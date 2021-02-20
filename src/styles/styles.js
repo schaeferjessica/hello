@@ -28,7 +28,7 @@ export default createGlobalStyle`
   html {
     font-weight: 400;
     font-size: 18px;
-    line-height: 1.5;
+    line-height: 1.7;
     font-family: 'Inter', 'Roboto', 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell',
     'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -41,20 +41,24 @@ export default createGlobalStyle`
     @media ${devices.tablet} { 
       font-size: 16px;
     }
+
+    @media ${devices.tablet} { 
+      font-size: 14px;
+    }
   }
 
   h1,
   h2,
   h3 {
     font-weight: normal;
-    font-size: 28px;
+    font-size: 27px;
 
     @media ${devices.tablet} { 
-      font-size: 25px;
+      font-size: 22px;
     }
 
     @media ${devices.mobile} { 
-      font-size: 20px;
+      font-size: 18px;
     }
   }
 
@@ -67,7 +71,7 @@ export default createGlobalStyle`
     }
 
     @media ${devices.mobile} { 
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 `;

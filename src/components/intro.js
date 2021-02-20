@@ -41,7 +41,6 @@ const TextWrapper = styled.div`
   margin-top: -80px;
   z-index: 1;
   padding: 40px;
-  text-align: center;
 
   @media ${devices.tablet} {
     width: 93%;
@@ -61,6 +60,13 @@ const Intro = ({ text, image }) => {
   const { color } = useContext(ThemeContext);
   const textRef = useRef(null);
   const introRef = useRef(null);
+  const sources = [
+    image.mobileImage.fluid,
+    {
+      ...image.desktopImage.fluid,
+      media: `(min-width: 768px)`,
+    },
+  ];
 
   const jumpTo = (hash) => {
     const target = document.querySelector(hash);
@@ -100,7 +106,7 @@ const Intro = ({ text, image }) => {
     <IntroContainer ref={introRef}>
       {image ? (
         <ImageWrapper>
-          <Img fluid={image.fluid} alt={image.title} />
+          <Img fluid={sources} alt={image.title} />
         </ImageWrapper>
       ) : (
         ''

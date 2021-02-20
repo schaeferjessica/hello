@@ -7,8 +7,14 @@ export const useContentfulIntro = () => {
         text {
           raw
         }
-        image {
+        desktopImage: image {
           fluid(maxWidth: 1920, maxHeight: 800, quality: 100) {
+            ...GatsbyContentfulFluid_withWebp
+          }
+          title
+        }
+        mobileImage: image {
+          fluid(maxWidth: 1920, maxHeight: 1200, quality: 100) {
             ...GatsbyContentfulFluid_withWebp
           }
           title
@@ -19,7 +25,10 @@ export const useContentfulIntro = () => {
 
   return {
     text: data.contentfulIntro.text.raw,
-    image: data.contentfulIntro.image,
+    image: {
+      desktopImage: data.contentfulIntro.desktopImage,
+      mobileImage: data.contentfulIntro.mobileImage,
+    },
   };
 };
 

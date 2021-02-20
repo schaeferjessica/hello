@@ -93,6 +93,10 @@ const TextWrapper = styled.div`
 
   p {
     font-size: 16px;
+
+    @media ${devices.mobile} {
+      font-size: 14px;
+    }
   }
 `;
 
