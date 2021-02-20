@@ -142,7 +142,7 @@ const Table = ({ targetId, title, rows }) => {
               <td className="description">
                 <a
                   color={color.foreground}
-                  href={table.link}
+                  href={table.url}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
