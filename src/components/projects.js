@@ -27,11 +27,6 @@ const ProjectList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-
-  h3 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
 `;
 
 const TeaserLink = styled.a`
@@ -83,6 +78,24 @@ const ImgWrapper = styled.a`
   }
 `;
 
+const TextWrapper = styled.div`
+  margin-top: -40px;
+  z-index: 1;
+  position: relative;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: #f5f2ec;
+  padding: 10px;
+
+  h3 {
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+`;
+
 const Projects = ({ targetId, title, teasers }) => {
   const projectEl = useRef(null);
   const { color } = useContext(ThemeContext);
@@ -117,19 +130,21 @@ const Projects = ({ targetId, title, teasers }) => {
             >
               <Img fluid={teaser.image.fluid} alt={teaser.image.title} />
             </ImgWrapper>
-            <h3>
-              <TeaserLink
-                color={color.foreground}
-                href={teaser.link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {teaser.title}
-              </TeaserLink>
-            </h3>
-            {teaser.text
-              ? documentToReactComponents(JSON.parse(teaser.text.raw))
-              : ''}
+            <TextWrapper>
+              <h3>
+                <TeaserLink
+                  color={color.foreground}
+                  href={teaser.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {teaser.title}
+                </TeaserLink>
+              </h3>
+              {teaser.text
+                ? documentToReactComponents(JSON.parse(teaser.text.raw))
+                : ''}
+            </TextWrapper>
           </ProjectTeaser>
         ))}
       </ProjectList>

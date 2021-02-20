@@ -3,23 +3,19 @@ import ThemeContext from '../styles/themecontext';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
-import { moduleSpace } from '../styles/container';
 import { devices } from '../styles/breakpoints';
 import anime from 'animejs/lib/anime.es.js';
 
 const IntroContainer = styled.section`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  ${moduleSpace}
-
-  @media ${devices.tablet} {
-    display: block;
-  }
 `;
 
 const ImageWrapper = styled.div`
-  width: 30%;
+  width: 100%;
+  max-height: 700px;
 
   img {
     width: 100%;
@@ -40,11 +36,20 @@ const ImageWrapper = styled.div`
 `;
 
 const TextWrapper = styled.div`
-  width: 65%;
-  color: ${(props) => props.color};
+  width: 80%;
+  color: #0c3c87;
+  background-color: #f8f5ec;
+  margin-top: -80px;
+  z-index: 1;
+  padding: 40px;
+  text-align: center;
 
   @media ${devices.tablet} {
-    width: 100%;
+    padding: 20px;
+  }
+
+  @media ${devices.mobile} {
+    padding: 10px;
   }
 
   a {
@@ -92,7 +97,7 @@ const Intro = ({ text, image }) => {
   }, []);
 
   return (
-    <IntroContainer className="container" ref={introRef}>
+    <IntroContainer ref={introRef}>
       {image ? (
         <ImageWrapper>
           <Img fluid={image.fluid} alt={image.title} />
