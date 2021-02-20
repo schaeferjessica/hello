@@ -30,7 +30,7 @@ const ProjectList = styled.ul`
 `;
 
 const TeaserLink = styled.a`
-  color: ${(props) => props.color};
+  color: ${(props) => props.color.foreground};
   text-decoration: none;
 `;
 
@@ -84,7 +84,7 @@ const TextWrapper = styled.div`
   position: relative;
   margin-left: 20px;
   margin-right: 20px;
-  background-color: #f5f2ec;
+  background-color: ${(props) => props.color.background};
   padding: 10px;
 
   h3 {
@@ -117,16 +117,11 @@ const Projects = ({ targetId, title, teasers }) => {
   }, []);
 
   return (
-    <ProjectsContainer
-      className="container"
-      color={color.foreground}
-      ref={projectEl}
-      id={targetId}
-    >
+    <ProjectsContainer className="container" ref={projectEl} id={targetId}>
       <h2>{title}</h2>
       <ProjectList>
         {teasers.map((teaser, index) => (
-          <ProjectTeaser key={`teaser-${index}`} color={color.foreground}>
+          <ProjectTeaser key={`teaser-${index}`} color={color}>
             <ImgWrapper
               href={teaser.link}
               target="_blank"
@@ -134,10 +129,10 @@ const Projects = ({ targetId, title, teasers }) => {
             >
               <Img fluid={teaser.image.fluid} alt={teaser.image.title} />
             </ImgWrapper>
-            <TextWrapper>
+            <TextWrapper color={color}>
               <h3>
                 <TeaserLink
-                  color={color.foreground}
+                  color={color}
                   href={teaser.link}
                   target="_blank"
                   rel="noopener noreferrer"

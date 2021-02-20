@@ -47,31 +47,36 @@ export default createGlobalStyle`
     }
   }
 
+  
   h1,
   h2,
   h3 {
-    font-weight: normal;
-    font-size: 27px;
+    font-weight: 400;
+    font-family: 'Inria Serif';
+  }
+
+  h1,
+  h2 {
+    font-size: 28px;
+
+    @media ${devices.tablet} { 
+      font-size: 24px;
+    }
+
+    @media ${devices.mobile} { 
+      font-size: 22px;
+    }
+  }
+
+  h3 {
+    font-size: 26px;
 
     @media ${devices.tablet} { 
       font-size: 22px;
     }
 
     @media ${devices.mobile} { 
-      font-size: 18px;
-    }
-  }
-
-  h3 {
-    font-weight: normal;
-    font-size: 22px;
-
-    @media ${devices.tablet} { 
       font-size: 20px;
-    }
-
-    @media ${devices.mobile} { 
-      font-size: 16px;
     }
   }
 `;

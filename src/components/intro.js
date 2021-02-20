@@ -37,10 +37,11 @@ const ImageWrapper = styled.div`
 const TextWrapper = styled.div`
   width: 80%;
   color: #0c3c87;
-  background-color: #f8f5ec;
+  background-color: ${(props) => props.color.background};
   margin-top: -80px;
   z-index: 1;
   padding: 40px;
+  color: ${(props) => props.color.foreground};
 
   @media ${devices.tablet} {
     width: 93%;
@@ -52,7 +53,7 @@ const TextWrapper = styled.div`
   }
 
   a {
-    color: ${(props) => props.color};
+    color: ${(props) => props.color.foreground};
   }
 `;
 
@@ -111,7 +112,7 @@ const Intro = ({ text, image }) => {
       ) : (
         ''
       )}
-      <TextWrapper color={color.foreground} ref={textRef}>
+      <TextWrapper color={color} ref={textRef}>
         {documentToReactComponents(JSON.parse(text))}
       </TextWrapper>
     </IntroContainer>
