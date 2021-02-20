@@ -79,4 +79,8 @@ export default createGlobalStyle`
       font-size: 20px;
     }
   }
+
+  a:focus-visible {
+    outline:  ${(props) => props.color.foreground} solid 2px;
+  }
 `;

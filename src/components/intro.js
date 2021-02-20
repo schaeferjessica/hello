@@ -54,6 +54,8 @@ const TextWrapper = styled.div`
 
   a {
     color: ${(props) => props.color.foreground};
+    text-decoration-thickness: 2px;
+    text-underline-offset: 7px;
   }
 `;
 

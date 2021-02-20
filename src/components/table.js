@@ -93,10 +93,6 @@ const TableEl = styled.table`
     @media ${devices.mobile} {
       padding: 0;
     }
-
-    &:focus-visible {
-      outline: 1px solid ${(props) => props.color};
-    }
   }
 
   span {
@@ -142,7 +138,7 @@ const Table = ({ targetId, title, rows }) => {
               <td className="description">
                 <a
                   color={color.foreground}
-                  href={table.url}
+                  href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
