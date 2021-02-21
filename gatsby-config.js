@@ -3,8 +3,8 @@ require('dotenv').config();
 module.exports = {
   pathPrefix: `/hello`,
   siteMetadata: {
-    title: 'jessica schaefer',
-    siteUrl: `https://schaeferjessica.github.io/hello/`,
+    title: 'Jessica Schäfer',
+    siteUrl: `https://jessicaschaefer.netlify.app/`,
     description: `Jessica Schäfer, frontend developer from berlin`,
     keywords: 'Jessica Schäfer, frontend developer',
   },

@@ -71,6 +71,7 @@ const ProjectTeaser = styled.li`
       width: 100%;
     }
 
+    &:first-child,
     &:nth-child(3n - 1) {
       margin-top: 0px;
     }
