@@ -150,6 +150,7 @@ const Projects = ({ targetId, title, teasers }) => {
               href={teaser.link}
               target="_blank"
               rel="noopener noreferrer"
+              tabIndex="-1"
             >
               <Img fluid={teaser.image.fluid} alt={teaser.image.title} />
             </ImgWrapper>

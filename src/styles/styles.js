@@ -2,6 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 import { devices } from './breakpoints';
 import { colorTransition } from './color';
 
+require('focus-visible');
+
 export default createGlobalStyle`
   // adding own globals styles //----------------------------------------
   *,
@@ -68,7 +70,12 @@ export default createGlobalStyle`
     }
   }
 
-  a:focus-visible {
+  * {
+    outline: none;
+  }
+  
+  a.focus-visible,
+  button.focus-visible {
     outline: 2px solid ${(props) => props.color.foreground};
   }
 
