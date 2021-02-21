@@ -26,7 +26,7 @@ export default createGlobalStyle`
 
 
   html {
-    font-weight: 400;
+    font-weight: 300;
     font-size: 18px;
     line-height: 1.7;
     font-family: 'Inter', 'Roboto', 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell',
@@ -58,10 +58,6 @@ export default createGlobalStyle`
     @media ${devices.tablet} { 
       font-size: 24px;
     }
-
-    @media ${devices.mobile} { 
-      font-size: 22px;
-    }
   }
 
   h3 {
@@ -69,10 +65,6 @@ export default createGlobalStyle`
 
     @media ${devices.tablet} { 
       font-size: 22px;
-    }
-
-    @media ${devices.mobile} { 
-      font-size: 20px;
     }
   }
 
