@@ -69,6 +69,14 @@ export default createGlobalStyle`
   }
 
   a:focus-visible {
-    outline:  ${(props) => props.color.foreground} solid 2px;
+    outline: 2px solid ${(props) => props.color.foreground};
+  }
+
+  button {
+    font-weight: 300;
+    font-family: 'Inter';
+    font-size: 16px;
+    border: 1px solid ${(props) => props.color.foreground};
+    padding: 15px 30px
   }
 `;

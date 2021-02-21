@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import ThemeContext from '../styles/themecontext';
 import { moduleSpace } from '../styles/container';
@@ -113,9 +113,20 @@ const TextWrapper = styled.div`
   }
 `;
 
+const ProjectButton = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
+
 const Projects = ({ targetId, title, teasers }) => {
   const projectEl = useRef(null);
   const { color } = useContext(ThemeContext);
+  const [visible, setVisible] = useState(5);
+
+  function loadMore() {
+    setVisible(visible + 6);
+  }
 
   useEffect(() => {
     anime.timeline().add({
@@ -133,7 +144,7 @@ const Projects = ({ targetId, title, teasers }) => {
     <ProjectsContainer className="container" ref={projectEl} id={targetId}>
       <h2>{title}</h2>
       <ProjectList>
-        {teasers.map((teaser, index) => (
+        {teasers.slice(0, visible).map((teaser, index) => (
           <ProjectTeaser key={`teaser-${index}`} color={color}>
             <ImgWrapper
               href={teaser.link}
@@ -160,6 +171,11 @@ const Projects = ({ targetId, title, teasers }) => {
           </ProjectTeaser>
         ))}
       </ProjectList>
+      {visible < teasers.length && (
+        <ProjectButton>
+          <button onClick={loadMore}>more projects</button>
+        </ProjectButton>
+      )}
     </ProjectsContainer>
   );
 };

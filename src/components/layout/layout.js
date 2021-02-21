@@ -53,7 +53,7 @@ const Layout = ({ children }) => {
     document.addEventListener('mousemove', (e) => followMouse(e));
     document.addEventListener('scroll', (e) => followMouse(e));
 
-    const links = [...document.querySelectorAll('a')];
+    const links = [...document.querySelectorAll('a, button')];
     if (links.length) {
       links.forEach((link) => {
         link.addEventListener('mouseenter', () => {
