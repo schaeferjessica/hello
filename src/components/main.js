@@ -3,7 +3,7 @@ import useContentEducation from '../hooks/use-education';
 import useContentfulIntro from '../hooks/use-intro';
 import useContentfulWork from '../hooks/use-work';
 import useContentfulProjects from '../hooks/use-projects';
-// import useContentfulSideProjects from '../hooks/use-sideprojects';
+import useContentfulSideProjects from '../hooks/use-sideprojects';
 import Intro from './intro';
 import Table from './table';
 import Projects from './projects';
@@ -13,7 +13,7 @@ const Main = () => {
   const educationContext = useContentEducation();
   const workContext = useContentfulWork();
   const projectsContext = useContentfulProjects();
-  // const sideProjectsContext = useContentfulSideProjects();
+  const sideProjectsContext = useContentfulSideProjects();
 
   return (
     <main>
@@ -33,11 +33,11 @@ const Main = () => {
         title={projectsContext.title}
         teasers={projectsContext.teasers}
       />
-      {/* <Projects
+      <Projects
         targetId="sideprojects"
         title={sideProjectsContext.title}
         teasers={sideProjectsContext.teasers}
-      /> */}
+      />
     </main>
   );
 };

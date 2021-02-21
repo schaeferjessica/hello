@@ -41,10 +41,6 @@ export default createGlobalStyle`
     @media ${devices.tablet} { 
       font-size: 16px;
     }
-
-    @media ${devices.tablet} { 
-      font-size: 14px;
-    }
   }
 
   

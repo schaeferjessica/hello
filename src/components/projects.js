@@ -27,6 +27,13 @@ const ProjectList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
+
+  &:after {
+    content: '';
+    flex-basis: 28%;
+    max-width: 28%;
+    height: 0;
+  }
 `;
 
 const TeaserLink = styled.a`
@@ -93,10 +100,6 @@ const TextWrapper = styled.div`
 
   p {
     font-size: 16px;
-
-    @media ${devices.mobile} {
-      font-size: 14px;
-    }
   }
 `;
 
