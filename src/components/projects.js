@@ -45,7 +45,12 @@ const ProjectTeaser = styled.li`
   width: 28%;
   margin-bottom: 80px;
 
-  &:nth-child(3n - 1) {
+  &:first-child,
+  &:nth-child(2) {
+    width: 47%;
+  }
+
+  &:nth-child(3n -2) {
     margin-top: 40px;
   }
 
@@ -60,6 +65,11 @@ const ProjectTeaser = styled.li`
   @media ${devices.mobile} {
     width: 100%;
     margin-bottom: 40px;
+
+    &:first-child,
+    &:nth-child(2) {
+      width: 100%;
+    }
 
     &:nth-child(3n - 1) {
       margin-top: 0px;
