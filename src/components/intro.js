@@ -5,6 +5,7 @@ import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { devices } from '../styles/breakpoints';
 import anime from 'animejs/lib/anime.es.js';
+import aniScroll from '../ani-scroll';
 
 const IntroContainer = styled.section`
   display: flex;
@@ -69,10 +70,7 @@ const Intro = ({ text, image }) => {
     const target = document.querySelector(hash);
     const rect = target.getBoundingClientRect();
 
-    window.scrollTo({
-      top: rect.top,
-      behavior: 'smooth',
-    });
+    aniScroll(rect.top, 400, 'linear');
   };
 
   useEffect(() => {
