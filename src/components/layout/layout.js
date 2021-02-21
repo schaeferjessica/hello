@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { colors } from '../../styles/color';
 import ThemeContext from '../../styles/themecontext';
 import { devices } from '../../styles/breakpoints';
+import SEO from '../seo';
 
 const Cursor = styled.div`
   width: 53px;
@@ -107,6 +108,7 @@ const Layout = ({ children }) => {
           </Cursor>
         )}
       </ThemeContext.Consumer>
+      <SEO />
       {children}
     </ThemeContext.Provider>
   );

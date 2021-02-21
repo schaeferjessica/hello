@@ -6,6 +6,7 @@ module.exports = {
     title: 'jessica schaefer',
     siteUrl: `https://schaeferjessica.github.io/hello/`,
     description: `Jessica Schäfer, frontend developer from berlin`,
+    keywords: 'Jessica Schäfer, frontend developer',
   },
   plugins: [
     'gatsby-plugin-styled-components',

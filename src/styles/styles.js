@@ -48,7 +48,7 @@ export default createGlobalStyle`
   h2,
   h3 {
     font-weight: 400;
-    font-family: 'Inria Serif';
+    font-family: 'Shippori Mincho', serif;
   }
 
   h1,
