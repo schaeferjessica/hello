@@ -73,7 +73,18 @@ export default createGlobalStyle`
   * {
     outline: none;
   }
-  
+
+
+  p:not(:last-child) {
+    margin-bottom: 18px;
+  }
+
+  a {
+    color: ${(props) => props.color.foreground};
+    text-decoration-thickness: 2px;
+    text-underline-offset: 7px;
+  }
+
   a.focus-visible,
   button.focus-visible {
     outline: 2px solid ${(props) => props.color.foreground};
@@ -85,5 +96,9 @@ export default createGlobalStyle`
     font-size: 16px;
     border: 1px solid ${(props) => props.color.foreground};
     padding: 15px 30px
+  }
+
+  ul {
+    list-style: square inside;
   }
 `;

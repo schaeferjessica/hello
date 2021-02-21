@@ -46,8 +46,10 @@ const Layout = ({ children }) => {
   // let custom cursor follow mouse
   const bindMouseEvents = (cursor) => {
     const followMouse = (e) => {
-      cursor.current.style.top = `${e.clientY}px`;
-      cursor.current.style.left = `${e.clientX}px`;
+      if (cursor.current) {
+        cursor.current.style.top = `${e.clientY}px`;
+        cursor.current.style.left = `${e.clientX}px`;
+      }
     };
 
     document.addEventListener('mousemove', (e) => followMouse(e));

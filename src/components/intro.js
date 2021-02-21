@@ -51,12 +51,6 @@ const TextWrapper = styled.div`
   @media ${devices.mobile} {
     padding: 10px;
   }
-
-  a {
-    color: ${(props) => props.color.foreground};
-    text-decoration-thickness: 2px;
-    text-underline-offset: 7px;
-  }
 `;
 
 const Intro = ({ text, image }) => {

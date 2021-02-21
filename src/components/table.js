@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import ThemeContext from '../styles/themecontext';
 import { devices } from '../styles/breakpoints';
 import { moduleSpace } from '../styles/container';
-import { colorTransition } from '../styles/color';
 import anime from 'animejs/lib/anime.es.js';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
@@ -75,7 +74,6 @@ const TableEl = styled.table`
     padding-bottom: 10px;
     display: flex;
     align-items: center;
-    ${colorTransition}
 
     @media ${devices.mobile} {
       padding-top: 0px;
@@ -84,11 +82,9 @@ const TableEl = styled.table`
   }
 
   a {
-    color: ${(props) => props.color};
     text-decoration: none;
     padding: 5px;
     display: inline-block;
-    ${colorTransition}
 
     @media ${devices.mobile} {
       padding: 0;
