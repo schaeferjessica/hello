@@ -4,7 +4,8 @@ import { devices } from './breakpoints';
 export default createGlobalStyle`
   .container {
     max-width: 2000px;
-    margin: 0 auto;
+    margin-right: auto;
+    margin-left: auto;
     padding-left: 40px;
     padding-right: 40px;
     

@@ -8,15 +8,17 @@ export const useContentfulIntro = () => {
           raw
         }
         desktopImage: image {
-          fluid(maxWidth: 1920, maxHeight: 800, quality: 100) {
-            ...GatsbyContentfulFluid_withWebp
-          }
+          gatsbyImageData(
+           width: 1920
+           height: 800
+         )
           title
         }
         mobileImage: image {
-          fluid(maxWidth: 1920, maxHeight: 1200, quality: 100) {
-            ...GatsbyContentfulFluid_withWebp
-          }
+          gatsbyImageData(
+           width: 1920
+           height: 1200
+         )
           title
         }
       }
