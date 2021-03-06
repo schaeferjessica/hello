@@ -15,9 +15,10 @@ export const useContentfulSideProjects = () => {
           }
           image {
             title
-            fluid(maxWidth: 900, maxHeight: 506, quality: 100) {
-              ...GatsbyContentfulFluid_withWebp
-            }
+            gatsbyImageData(
+              width: 900
+              height: 506
+            )
           }
         }
       }

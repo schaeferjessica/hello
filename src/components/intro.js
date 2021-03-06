@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import ThemeContext from '../styles/themecontext';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage, withArtDirection } from "gatsby-plugin-image"
 import styled from 'styled-components';
 import { devices } from '../styles/breakpoints';
 import anime from 'animejs/lib/anime.es.js';
@@ -18,11 +18,8 @@ const ImageWrapper = styled.div`
   width: 100%;
 
   img {
-    width: 100%;
-    height: 100%;
     transform: scale(1);
     transition: opacity 500ms ease 0s, transform 0.5s linear !important;
-    object-fit: contain;
 
     &:hover {
       transform: scale(1.1);
@@ -58,13 +55,13 @@ const Intro = ({ text, image }) => {
   const { color } = useContext(ThemeContext);
   const textRef = useRef(null);
   const introRef = useRef(null);
-  const sources = [
-    image.mobileImage.fluid,
+  const sources = withArtDirection(getImage(image.desktopImage), [
     {
-      ...image.desktopImage.fluid,
-      media: `(min-width: 768px)`,
+      media: "(max-width: 768px)",
+      image: getImage(image.mobileImage),
     },
-  ];
+  ])
+  const altTag = image.desktopImage.title;
 
   const jumpTo = (hash) => {
     const target = document.querySelector(hash);
@@ -101,7 +98,7 @@ const Intro = ({ text, image }) => {
     <IntroContainer ref={introRef}>
       {image ? (
         <ImageWrapper>
-          <Img fluid={sources} alt={image.title} />
+          <GatsbyImage image={sources} alt={altTag} layout="fullWidth" />
         </ImageWrapper>
       ) : (
         ''

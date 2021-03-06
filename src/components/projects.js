@@ -4,7 +4,7 @@ import ThemeContext from '../styles/themecontext';
 import { moduleSpace } from '../styles/container';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import anime from 'animejs/lib/anime.es.js';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { devices } from '../styles/breakpoints';
 
 // styles
@@ -88,7 +88,6 @@ const ImgWrapper = styled.a`
     height: 100%;
     transform: scale(1);
     transition: opacity 500ms ease 0s, transform 0.5s linear !important;
-    object-fit: contain;
 
     &:hover {
       transform: scale(1.1);
@@ -140,20 +139,23 @@ const Projects = ({ targetId, title, teasers }) => {
       delay: 400,
     });
   }, []);
-
+  
   return (
     <ProjectsContainer className="container" ref={projectEl} id={targetId}>
       <h2>{title}</h2>
       <ProjectList>
-        {teasers.slice(0, visible).map((teaser, index) => (
-          <ProjectTeaser key={`teaser-${index}`} color={color}>
+        {teasers.slice(0, visible).map((teaser, index) => {
+          const image = getImage(teaser.image)
+
+          return (
+            <ProjectTeaser key={`teaser-${index}`} color={color}>
             <ImgWrapper
               href={teaser.link}
               target="_blank"
               rel="noopener noreferrer"
               tabIndex="-1"
             >
-              <Img fluid={teaser.image.fluid} alt={teaser.image.title} />
+              <GatsbyImage image={image} alt={teaser.image.title} />
             </ImgWrapper>
             <TextWrapper color={color}>
               <h3>
@@ -171,7 +173,8 @@ const Projects = ({ targetId, title, teasers }) => {
                 : ''}
             </TextWrapper>
           </ProjectTeaser>
-        ))}
+          )
+        })}
       </ProjectList>
       {visible < teasers.length && (
         <ProjectButton>
