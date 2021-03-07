@@ -13,7 +13,7 @@ const SEO = ({ pageTitle, pageUrl }) => {
       <title>{siteTitle}</title>
       <meta name="description" content={description} />
       <meta name="generator" content="Gatsby.js" />
-      <meta name="”robots" content="noodp,noydir" />
+      <meta name="robots" content="index, follow" />
       <meta name="keywords" content={keywords} />
       <meta name="author" content={siteTitle} />
       <meta property="og:site_name" content="" />
@@ -31,11 +31,6 @@ const SEO = ({ pageTitle, pageUrl }) => {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <link rel="canonical" content={url}></link>
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&display=swap"
-        rel="stylesheet"
-      />
     </Helmet>
   );
 };
