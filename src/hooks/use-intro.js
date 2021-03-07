@@ -19,7 +19,6 @@ export const useContentfulIntro = () => {
            width: 1920
            height: 1200
          )
-          title
         }
       }
     }
@@ -28,8 +27,9 @@ export const useContentfulIntro = () => {
   return {
     text: data.contentfulIntro.text.raw,
     image: {
-      desktopImage: data.contentfulIntro.desktopImage,
-      mobileImage: data.contentfulIntro.mobileImage,
+      desktopImage: data.contentfulIntro.desktopImage.gatsbyImageData,
+      mobileImage: data.contentfulIntro.mobileImage.gatsbyImageData,
+      altTag: data.contentfulIntro.desktopImage.title
     },
   };
 };

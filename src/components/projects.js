@@ -4,7 +4,7 @@ import ThemeContext from '../styles/themecontext';
 import { moduleSpace } from '../styles/container';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import anime from 'animejs/lib/anime.es.js';
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { devices } from '../styles/breakpoints';
 
 // styles
@@ -64,7 +64,7 @@ const ProjectTeaser = styled.li`
 
   @media ${devices.mobile} {
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 
     &:first-child,
     &:nth-child(2) {
@@ -122,13 +122,28 @@ const ProjectButton = styled.div`
 const Projects = ({ targetId, title, teasers }) => {
   const projectEl = useRef(null);
   const { color } = useContext(ThemeContext);
-  const [visible, setVisible] = useState(5);
+  const [visible, setVisible] = useState(0); //desktop 5 // tablet 4 // mobile 3
 
   function loadMore() {
-    setVisible(visible + 6);
+    const loadMoreItems = window.matchMedia('(max-width: 768px)').matches
+      ? 2
+      : window.matchMedia('(max-width: 1024px)').matches
+      ? 4
+      : 6;
+    setVisible(visible + loadMoreItems); //desktop 6 // tablet 4 // mobile 2
+  }
+
+  function getVisibleItems() {
+    return window.matchMedia('(max-width: 768px)').matches
+      ? 3
+      : window.matchMedia('(max-width: 1024px)').matches
+      ? 4
+      : 5;
   }
 
   useEffect(() => {
+    setVisible(getVisibleItems());
+
     anime.timeline().add({
       targets: projectEl.current,
       translateY: [100, 0],
@@ -139,41 +154,41 @@ const Projects = ({ targetId, title, teasers }) => {
       delay: 400,
     });
   }, []);
-  
+
   return (
     <ProjectsContainer className="container" ref={projectEl} id={targetId}>
       <h2>{title}</h2>
       <ProjectList>
         {teasers.slice(0, visible).map((teaser, index) => {
-          const image = getImage(teaser.image)
+          const image = getImage(teaser.image);
 
           return (
             <ProjectTeaser key={`teaser-${index}`} color={color}>
-            <ImgWrapper
-              href={teaser.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              tabIndex="-1"
-            >
-              <GatsbyImage image={image} alt={teaser.image.title} />
-            </ImgWrapper>
-            <TextWrapper color={color}>
-              <h3>
-                <TeaserLink
-                  color={color}
-                  href={teaser.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {teaser.title}
-                </TeaserLink>
-              </h3>
-              {teaser.text
-                ? documentToReactComponents(JSON.parse(teaser.text.raw))
-                : ''}
-            </TextWrapper>
-          </ProjectTeaser>
-          )
+              <ImgWrapper
+                href={teaser.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                tabIndex="-1"
+              >
+                <GatsbyImage image={image} alt={teaser.image.title} />
+              </ImgWrapper>
+              <TextWrapper color={color}>
+                <h3>
+                  <TeaserLink
+                    color={color}
+                    href={teaser.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {teaser.title}
+                  </TeaserLink>
+                </h3>
+                {teaser.text
+                  ? documentToReactComponents(JSON.parse(teaser.text.raw))
+                  : ''}
+              </TextWrapper>
+            </ProjectTeaser>
+          );
         })}
       </ProjectList>
       {visible < teasers.length && (

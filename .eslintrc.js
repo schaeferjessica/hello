@@ -8,8 +8,6 @@ module.exports = {
     'plugin:import/errors',
     'plugin:react/recommended',
     'plugin:jsx-a11y/recommended',
-    'prettier',
-    'prettier/react',
   ],
   rules: {
     'prettier/prettier': [

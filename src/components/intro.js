@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import ThemeContext from '../styles/themecontext';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { GatsbyImage, getImage, withArtDirection } from "gatsby-plugin-image"
+import { GatsbyImage, getImage, withArtDirection } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { devices } from '../styles/breakpoints';
 import anime from 'animejs/lib/anime.es.js';
@@ -16,6 +16,12 @@ const IntroContainer = styled.section`
 
 const ImageWrapper = styled.div`
   width: 100%;
+
+  .gatsby-image-wrapper {
+    @media ${devices.tablet} {
+      height: 300px;
+    }
+  }
 
   img {
     transform: scale(1);
@@ -36,7 +42,7 @@ const TextWrapper = styled.div`
   width: 80%;
   color: #0c3c87;
   background-color: ${(props) => props.color.background};
-  margin-top: -80px;
+  margin-top: -100px;
   z-index: 1;
   padding: 40px;
   color: ${(props) => props.color.foreground};
@@ -57,11 +63,10 @@ const Intro = ({ text, image }) => {
   const introRef = useRef(null);
   const sources = withArtDirection(getImage(image.desktopImage), [
     {
-      media: "(max-width: 768px)",
+      media: '(max-width: 768px)',
       image: getImage(image.mobileImage),
     },
-  ])
-  const altTag = image.desktopImage.title;
+  ]);
 
   const jumpTo = (hash) => {
     const target = document.querySelector(hash);
@@ -98,7 +103,7 @@ const Intro = ({ text, image }) => {
     <IntroContainer ref={introRef}>
       {image ? (
         <ImageWrapper>
-          <GatsbyImage image={sources} alt={altTag} layout="fullWidth" />
+          <GatsbyImage image={sources} alt={image.altTag} layout="fullWidth" />
         </ImageWrapper>
       ) : (
         ''

@@ -60,6 +60,10 @@ export default createGlobalStyle`
     @media ${devices.tablet} { 
       font-size: 24px;
     }
+
+    @media ${devices.mobile} { 
+      font-size: 22px;
+    }
   }
 
   h3 {
@@ -67,6 +71,10 @@ export default createGlobalStyle`
 
     @media ${devices.tablet} { 
       font-size: 22px;
+    }
+
+    @media ${devices.mobile} { 
+      font-size: 20px;
     }
   }
 
