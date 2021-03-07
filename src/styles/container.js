@@ -18,13 +18,13 @@ export default createGlobalStyle`
 `;
 
 export const moduleSpace = `
-  margin-top: 160px;
+  margin-top: 180px;
 
   @media ${devices.tablet} { 
-    margin-top: 80px;
+    margin-top: 100px;
   }
 
   @media ${devices.mobile} {
-    margin-top: 50px;
+    margin-top: 80px;
   }
 `;

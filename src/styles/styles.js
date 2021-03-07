@@ -31,7 +31,7 @@ export default createGlobalStyle`
     font-weight: 300;
     font-size: 18px;
     line-height: 1.7;
-    font-family: 'Inter', 'Roboto', 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell',
+    font-family: 'IBM Plex Sans', 'Roboto', 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell',
     'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -49,8 +49,7 @@ export default createGlobalStyle`
   h1,
   h2,
   h3 {
-    font-weight: 400;
-    font-family: 'Shippori Mincho', serif;
+    font-family: 'IBM Plex Serif';
   }
 
   h1,
@@ -62,7 +61,7 @@ export default createGlobalStyle`
     }
 
     @media ${devices.mobile} { 
-      font-size: 22px;
+      font-size: 21px;
     }
   }
 
@@ -74,7 +73,7 @@ export default createGlobalStyle`
     }
 
     @media ${devices.mobile} { 
-      font-size: 20px;
+      font-size: 18px;
     }
   }
 
@@ -89,7 +88,7 @@ export default createGlobalStyle`
 
   a {
     color: ${(props) => props.color.foreground};
-    text-decoration-thickness: 2px;
+    text-decoration-thickness: 1.5px;
     text-underline-offset: 7px;
   }
 
@@ -99,10 +98,9 @@ export default createGlobalStyle`
   }
 
   button {
-    font-weight: 300;
-    font-family: 'Inter';
+    font-family: 'IBM Plex Sans';
     font-size: 16px;
-    border: 1px solid ${(props) => props.color.foreground};
+    border: 1.5px solid ${(props) => props.color.foreground};
     padding: 15px 30px
   }
 
