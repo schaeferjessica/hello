@@ -50,6 +50,7 @@ export default createGlobalStyle`
   h2,
   h3 {
     font-family: 'IBM Plex Serif';
+    font-weight: 300;
   }
 
   h1,
