@@ -102,7 +102,8 @@ export default createGlobalStyle`
     font-family: 'IBM Plex Sans';
     font-size: 16px;
     border: 1.5px solid ${(props) => props.color.foreground};
-    padding: 15px 30px
+    padding: 15px 30px;
+    color: ${(props) => props.color.foreground};
   }
 
   ul {
